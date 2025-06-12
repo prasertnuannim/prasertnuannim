@@ -24,3 +24,42 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@font-face {
+  font-family: 'Kalam';
+  src: url('/fonts/kalam/Kalam-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Kalam', cursive;
+}
+
+.tech-bg {
+  background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 255, 255, 0.1),
+      rgba(0, 255, 255, 0.1) 1px,
+      transparent 1px,
+      transparent 20px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 255, 255, 0.1),
+      rgba(0, 255, 255, 0.1) 1px,
+      transparent 1px,
+      transparent 20px
+    );
+  animation: bgMove 10s linear infinite;
+}
+
+@keyframes bgMove {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 100px 100px, 100px 100px;
+  }
+}
