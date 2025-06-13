@@ -1,5 +1,11 @@
 {
   "Home": {
-    "welcomeMessage": "Welcome to my personal world — a small space brimming with inspiration, creativity, and limitless journeys through the universe of technology."
+    "welcomeMessage": "Welcome to my personal world a small space brimming with inspiration, creativity, and limitless journeys through the universe of technology."
+  },
+  "About": {
+    "title": "About Me",
+    "description1": "Hi, I’m Prasert Nuannim a passionate software developer with a strong interest in modern web technologies, IoT, and AI. I specialize in building intuitive, scalable digital solutions using frameworks like Next.js and React, along with tools such as Tailwind CSS and Node.js. ",
+    "description2": "My journey began with over 10 years of experience in IT Support, where I managed and maintained system operations with efficiency and reliability. This solid technical foundation has helped shape my developer mindset combining problem-solving, system thinking, and user-focused design. ",
+    "description3": "I’m always open to learning, collaborating, and tackling new challenges that push the boundaries of what technology can do. Let’s connect!"
   }
 }

@@ -1,9 +1,12 @@
 import Image from "next/image";
 import ColorMotionInChar from "./motions/ColorMotionInChar";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { getStyles } from "@/styles";
 
 export default function Home() {
   const t = useTranslations("Home");
+  const locale = useLocale();
+  const styles = getStyles(locale);
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-tr from-gray-400 to-white text-gray-800 flex-col text-center px-4 py-8">
       <div className="w-full flex justify-center">
@@ -18,7 +21,7 @@ export default function Home() {
       <div className="tracking-[-0.5em] font-bold text-md">
         <ColorMotionInChar className="pl-1 text-[32px]" name={"Hi I'm Sert"} />
       </div>
-      <p className="mt-4 text-base text-white sm:text-lg max-w-md">
+      <p className={styles.baseText}>
         {t("welcomeMessage")}
       </p>
     </div>

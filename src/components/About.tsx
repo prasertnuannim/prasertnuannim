@@ -1,15 +1,20 @@
+import { getStyles } from '@/styles';
+import { useLocale, useTranslations } from 'next-intl';
 import React from 'react'
 
 export default function About() {
+  const t = useTranslations("About");
+  const locale = useLocale();
+  const styles = getStyles(locale);
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white text-black">
-      <div className="max-w-2xl text-center">
-        <h2 className="text-3xl font-bold mb-4">About Me</h2>
-        <p className='text-lg'>Hi, I’m Prasert Nuannim — a passionate software developer with a strong interest in modern web technologies, IoT, and AI. I specialize in building intuitive, scalable digital solutions using frameworks like Next.js and React, along with tools such as Tailwind CSS and Node.js.
-
-          My journey began with over 10 years of experience in IT Support, where I managed and maintained system operations with efficiency and reliability. This solid technical foundation has helped shape my developer mindset — combining problem-solving, system thinking, and user-focused design.
-
-          I’m always open to learning, collaborating, and tackling new challenges that push the boundaries of what technology can do. Let’s connect!</p>
+    <div className="flex items-center py-20 justify-center bg-white text-black px-4">
+      <div className="max-w-2xl">
+        <h2 className="text-2xl font-bold mb-4 indent-16">{t("title")}</h2>
+        <div className={`${styles.baseText}`}>
+          <div className='text-black indent-8'>{t("description1")}</div>
+          <div className='text-black indent-8'>{t("description2")}</div>
+          <div className='text-black indent-8'>{t("description3")}</div>
+        </div>
       </div>
     </div>
   )
