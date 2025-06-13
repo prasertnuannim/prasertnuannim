@@ -10,8 +10,6 @@ import {
   FiBriefcase,
 } from 'react-icons/fi'
 import { motion } from 'framer-motion'
-import { useTranslation } from 'react-i18next'
-import { usePathname, useRouter } from 'next/navigation'
 
 const navItems = [
   { id: 'home', label: 'Home', icon: <FiHome size={20} /> },
@@ -21,7 +19,6 @@ const navItems = [
   { id: 'services', label: 'Services', icon: <FiList size={20} /> },
   { id: 'contact', label: 'Contact', icon: <FiMail size={20} /> },
 ]
-
 
 export default function Navbar() {
   const [active, setActive] = useState('home')
@@ -45,31 +42,8 @@ export default function Navbar() {
 
     return () => observer.disconnect()
   }, [])
-
-  const { i18n } = useTranslation();
-  const router = useRouter();
-  const pathname = usePathname();
-
-  const switchLang = (lng: string) => {
-    const newPath = pathname.replace(/^\/(en|th)/, `/${lng}`);
-    router.push(newPath);
-  };
   return (
     <>
-     <nav className="flex justify-end gap-2 p-4">
-      <button
-        onClick={() => switchLang('en')}
-        className={i18n.language === 'en' ? 'font-bold underline' : ''}
-      >
-        EN
-      </button>
-      <button
-        onClick={() => switchLang('th')}
-        className={i18n.language === 'th' ? 'font-bold underline' : ''}
-      >
-        TH
-      </button>
-    </nav>
       {/* ✅ Sidebar ซ้าย: Tablet & Desktop (md ขึ้นไป) */}
       <aside className="hidden md:fixed md:top-1/2 md:left-0 md:-translate-y-1/2 md:z-50 md:w-14 md:py-4 md:bg-[#1e1a36] md:rounded-r-2xl md:flex md:flex-col md:items-center md:space-y-6">
         {navItems.map(item => (
