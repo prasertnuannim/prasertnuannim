@@ -1,10 +1,12 @@
+
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Home from "@/components/Home";
 import Navbar from "@/components/Navbar";
 import Projects from "@/components/Projects";
-import Services from "@/components/Services";
+import SectionHeightLogger from "@/components/SectionHeightLogger";
 import Skills from "@/components/Skills";
+import Works from "@/components/Works";
 import { AbstractIntlMessages } from "next-intl";
 import { getMessages } from "next-intl/server";
 
@@ -25,27 +27,31 @@ export async function generateMetadata({
 }
 
 export default function HomePage() {
+
   return (
     <main className="relative">
-      <Navbar />
-      <section id="home">
+      <div>
+        <Navbar />
+      </div>
+       
+      <SectionHeightLogger id="home" >
         <Home />
-      </section>
-      <section id="about">
+      </SectionHeightLogger>
+      <SectionHeightLogger id="about">
         <About />
-      </section>
-      <section id="skills">
+      </SectionHeightLogger>
+      <SectionHeightLogger id="skills" >
         <Skills />
-      </section>
-      <section id="projects">
+      </SectionHeightLogger>
+      <SectionHeightLogger id="projects" >
         <Projects />
-      </section>
-      <section id="services">
-        <Services />
-      </section>
-      <section id="contact">
+      </SectionHeightLogger>
+      <SectionHeightLogger id="works">
+        <Works />
+      </SectionHeightLogger>
+      <SectionHeightLogger id="contact" >
         <Contact />
-      </section>
+      </SectionHeightLogger>
     </main>
   );
 }
