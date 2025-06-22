@@ -4,6 +4,28 @@ import { Kalam, Mitr } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 
+export const metadata = {
+  title: "Prasert Nuannim",
+  description: "คำอธิบายเว็บไซต์ของคุณ",
+  openGraph: {
+    title: "Prasert Nuannim",
+    description: "พอร์ตโฟลิโอและผลงานของนักพัฒนา",
+    url: "https://yourdomain.com",
+    siteName: "Prasert Portfolio",
+    images: [
+      {
+        url: "/images/sertCG.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Prasert's Portfolio",
+      },
+    ],
+    locale: "th_TH",
+    type: "website",
+  },
+};
+
+
 const kalam = Kalam({
   variable: "--font-kalam",
   subsets: ["latin"],
