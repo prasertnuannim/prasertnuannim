@@ -1,15 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
-const projects = [
+
+export default function Projects() {
+    const t = useTranslations("Projects");
+    const projects = [
   {
-    title: "Portfolio Website",
-    description: "A personal portfolio site built with Next.js and Tailwind CSS.",
-    image: "/images/portfolio.png",
-    github: "https://github.com/yourname/portfolio",
-    demo: "https://yourdomain.com",
+    title: "OEE Dashboard Website",
+    description: <div className='text-white indent-8'>{t("descriptionOEE")}</div>,
+    image: "/images/oeeDashboard.png",
+    // github: "https://github.com/yourname/portfolio",
+    // demo: "https://yourdomain.com",
   },
   {
     title: "Portfolio Website",
@@ -48,7 +52,6 @@ const projects = [
   },
 ];
 
-export default function Projects() {
   return (
     <div className="min-h-screen py-16 bg-white">
       <div className="max-w-6xl mx-auto px-16 text-center">
@@ -57,7 +60,7 @@ export default function Projects() {
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              className="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-md"
+              className="bg-gray-500 rounded-xl p-4 overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
@@ -66,15 +69,16 @@ export default function Projects() {
                 alt={project.title}
                 width={500}
                 height={300}
+                className="rounded-xl p-1"
               />
               <div className="p-6 text-left">
-                <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
+                <h3 className="text-xl font-semibold text-white">
                   {project.title}
                 </h3>
-                <p className="mt-2 text-gray-600 dark:text-gray-300">
+                <p className="mt-1 text-gray-600">
                   {project.description}
                 </p>
-                <div className="mt-4 flex space-x-4">
+                {/* <div className="mt-4 flex space-x-4">
                   <a
                     href={project.github}
                     target="_blank"
@@ -91,7 +95,7 @@ export default function Projects() {
                   >
                     Demo
                   </a>
-                </div>
+                </div> */}
               </div>
             </motion.div>
           ))}

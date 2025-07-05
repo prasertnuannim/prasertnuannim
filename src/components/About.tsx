@@ -17,7 +17,6 @@ export default function About() {
         <div className={`${styles.baseText}`}>
           <div className='text-black indent-8'>{t("description1")}</div>
           <div className='text-black indent-8'>{t("description2")}</div>
-          <div className='text-black indent-8'>{t("description3")}</div>
         </div>
       </div>
     </div>

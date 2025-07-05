@@ -8,8 +8,14 @@ import {
   SiNextdotjs,
   SiTailwindcss,
   SiNodedotjs,
+  SiMui,
+  SiArduino,
+  SiRaspberrypi,
+  SiEspressif,
 } from "react-icons/si";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { BiLogoPostgresql } from "react-icons/bi";
 
 const skills = [
   {
@@ -17,7 +23,7 @@ const skills = [
     icon: <SiJavascript className="text-yellow-400" />,
     delay: 0,
   },
-  { name: "React", icon: <SiReact className="text-blue-400" />, delay: 0.2 },
+  { name: "React", icon: <SiReact className="text-cyan-300" />, delay: 0.2 },
   {
     name: "Next.js",
     icon: <SiNextdotjs className="text-black dark:text-white" />,
@@ -25,12 +31,64 @@ const skills = [
   },
   {
     name: "Tailwind CSS",
-    icon: <SiTailwindcss className="text-teal-400" />,
+    icon: <SiTailwindcss className="text-cyan-300" />,
+    delay: 0.6,
+  },
+  {
+    name: "MUI",
+    icon: <SiMui className="text-blue-600" />,
     delay: 0.6,
   },
   {
     name: "Node.js",
     icon: <SiNodedotjs className="text-green-500" />,
+    delay: 0.8,
+  },
+  {
+    name: "Python",
+    icon: (
+      <Image
+        src="/icons/python.png"
+        alt="Python Logo"
+        width={48}
+        height={48}
+        className="w-12 h-12"
+        priority
+      />
+    ),
+    delay: 0.8,
+  },
+  {
+    name: "Arduino",
+    icon: <SiArduino className="text-teal-500" />,
+    delay: 0.8,
+  },
+  {
+    name: "Raspberry Ii",
+    icon: <SiRaspberrypi className="text-[#C51A4A]" />,
+    delay: 0.8,
+  },
+  {
+    name: "Micro Controller",
+    icon: <SiEspressif className="text-[#E7352C]" />,
+    delay: 0.8,
+  },
+{
+  name: "MySQL",
+   icon: (
+      <Image
+        src="/icons/mysql.png"
+        alt="MySQL Logo"
+        width={50}
+        height={50}
+        priority
+      />
+    ),
+  delay: 0.8,
+},
+  {
+    name: "Postgresql",
+    icon: <BiLogoPostgresql className="text-[#336791] " />,
     delay: 0.8,
   },
 ];

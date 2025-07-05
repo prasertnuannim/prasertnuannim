@@ -4,11 +4,19 @@
   },
   "About": {
     "title": "About Me",
-    "description1": "Hi, I’m Prasert Nuannim a passionate software developer with a strong interest in modern web technologies, IoT, and AI. I specialize in building intuitive, scalable digital solutions using frameworks like Next.js and React, along with tools such as Tailwind CSS and Node.js. ",
-    "description2": "My journey began with over 10 years of experience in IT Support, where I managed and maintained system operations with efficiency and reliability. This solid technical foundation has helped shape my developer mindset combining problem-solving, system thinking, and user-focused design. ",
-    "description3": "I’m always open to learning, collaborating, and tackling new challenges that push the boundaries of what technology can do. Let’s connect!"
+    "description1": "Hi, I'm Prasert Nuannim\n\nI'm a web developer specializing in building high-performance, scalable, and user-friendly web applications using the full capabilities of Next.js — including SSR, SSG, dynamic routing, API routes, middleware, and SEO optimization.\n\nI'm proficient in TypeScript for type-safe development, Redux for managing complex application state, and Tailwind CSS for crafting fast and responsive user interfaces.\n\nI also have hands-on experience connecting with both SQL databases (such as MySQL and PostgreSQL), and using Node.js to build robust backend services and APIs.",
+    "description2": "My journey in tech began with over 10 years of experience in IT Support, where I developed strong skills in system management, technical troubleshooting, and systems thinking.\n\nThis experience shaped the way I approach software development — with a deep understanding of backend systems, paired with a focus on intuitive and scalable user experiences.\n\nAlong the way, I’ve had the opportunity to work on web projects involving IoT and AI image processing, allowing me to bridge the gap between hardware integration, data handling, and building interactive front-end applications."
   },
   "Skills": {
     "title": "My Skills"
+  },
+  "Projects": {
+    "title": "My Projects",
+    "descriptionOEE": "Developed a web application to display real-time OEE dashboard metrics for IoT systems, including run hours, loss hours, output, and summarized losses. Built interactive dashboards using React (TSX), Chart.js, Material UI, and Redux.\nImplemented a Node.js backend and established a connection to a MySQL server. Leveraged stored procedures in MySQL to optimize complex data queries for OEE metrics."
+  },
+  "workExperience": {
+    "title": "Work Experience",
+    "descriptionBelton": "I began working at Belton Co., Ltd. in 2013 - 2024 as an IT Support specialist, where I was responsible for installing, maintaining, and troubleshooting office and production computer systems, including resolving network issues related to Cisco infrastructure. Over the course of more than a decade, I expanded my skill set and transitioned into web and IoT development. I designed and deployed an internal Wi-Fi network and API domain to support IoT projects, utilized MySQL for calculating Overall Equipment Effectiveness (OEE) while preserving raw machine data, and developed microcontroller solutions using Python and Arduino (C/C++) for real-time equipment control and data collection. I also created internal dashboards and web applications using technologies such as Node.js, Next.js, React, Redux, Tailwind CSS, and Chart.js to visualize IoT data and support data-driven decisions in the production environment.",
+    "descriptionGeno": "Developed full-stack web applications using Next.js for the frontend and Node.js for the backend, with PostgreSQL as the primary database. Integrated the system with IoT devices to send and receive data from controllers, and visualized real-time data through dashboards. Collaborated with cross-functional teams to deliver efficient and scalable solutions."
   }
 }
