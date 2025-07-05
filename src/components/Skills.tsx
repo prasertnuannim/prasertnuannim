@@ -16,6 +16,7 @@ import {
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { BiLogoPostgresql } from "react-icons/bi";
+import { GrMysql } from "react-icons/gr";
 
 const skills = [
   {
@@ -73,19 +74,11 @@ const skills = [
     icon: <SiEspressif className="text-[#E7352C]" />,
     delay: 0.8,
   },
-{
-  name: "MySQL",
-   icon: (
-      <Image
-        src="/icons/mysql.png"
-        alt="MySQL Logo"
-        width={50}
-        height={50}
-        priority
-      />
-    ),
-  delay: 0.8,
-},
+  {
+    name: "MySQL",
+    icon: < GrMysql className="text-[#00758F]"/>,
+    delay: 0.8,
+  },
   {
     name: "Postgresql",
     icon: <BiLogoPostgresql className="text-[#336791] " />,
