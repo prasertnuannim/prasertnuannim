@@ -46,7 +46,7 @@ export default function SwitchLanguage() {
   }, [textControls]);
 
   return (
-    <div className="fixed top-4 right-4 z-50">
+    <div className="fixed right-4 z-50 p-5">
       <button
         onClick={toggleLocale}
         className="w-12 h-12 rounded-full backdrop-blur-md text-gray-400 font-bold border border-gray-300 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:cursor-pointer hover:bg-gray-200"
