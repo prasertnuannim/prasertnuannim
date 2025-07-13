@@ -72,7 +72,8 @@ export default function Projects() {
             duration: 0.5,
             ease: "easeOut",
           }}
-          className="inline-block mt-auto px-4 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600 self-start shadow-md"
+         className="inline-block mt-auto px-4 py-1 bg-gradient-to-bl from-blue-200 to-gray-700 text-white text-sm font-bold rounded hover:opacity-90 self-start shadow-md cursor-pointer"
+
         >
           See more
         </motion.button>
@@ -84,7 +85,7 @@ export default function Projects() {
     <div className="min-h-screen py-16 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
-          {t("title") || "My Projects"}
+          {t("title")}
         </h2>
 
         <section className="mb-12">
@@ -153,7 +154,7 @@ export default function Projects() {
 
               <button
                 onClick={() => setSelectedProject(null)}
-                className="mt-4 ml-2 px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-800"
+                className="mt-4 ml-2 px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-800 cursor-pointer"
               >
                 Close
               </button>
