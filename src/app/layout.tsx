@@ -7,10 +7,11 @@ import { getLocale, getMessages } from "next-intl/server";
 export const metadata = {
   title: "Prasert Nuannim",
   description: "คำอธิบายเว็บไซต์ของคุณ",
+  metadataBase: new URL('https://prasertnuannim.github.io/'),
   openGraph: {
     title: "Prasert Nuannim",
     description: "พอร์ตโฟลิโอและผลงานของนักพัฒนา",
-    url: "https://yourdomain.com",
+    url: "https://prasertnuannim.github.io/",
     siteName: "Prasert Portfolio",
     images: [
       {
