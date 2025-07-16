@@ -3,9 +3,8 @@ import type { NextConfig } from "next";
 const createNextIntlPlugin = require("next-intl/plugin");
 const withNextIntl = createNextIntlPlugin();
 const nextConfig: NextConfig = {
-  images: { unoptimized: true }, // ถ้าใช้ <Image />
-  basePath: '',
-  metadataBase: new URL('https://prasertnuannim.github.io'),
+   reactStrictMode: true,
+  /* config options here */
 };
 
-export default withNextIntl(nextConfig);
+export default withNextIntl(nextConfig) ;
