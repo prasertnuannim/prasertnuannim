@@ -1,20 +1,27 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useTranslations } from "next-intl";
-import Image from "next/image";
+import { AnimatePresence } from "framer-motion";
+import { useLocale, useTranslations } from "next-intl";
+import { getStyles } from "@/styles";
+import ProjectCard from "./projects/projectCard";
+import ProjectModal from "./projects/projectModal";
+
+type Project = {
+  title: string;
+  description: string;
+  image: string;
+  link?: string;
+};
 
 export default function Projects() {
   const t = useTranslations("Projects");
-  const [selectedProject, setSelectedProject] = useState<null | {
-    title: string;
-    description: string;
-    image: string;
-    link?: string;
-  }>(null);
+  const locale = useLocale();
+  const styles = getStyles(locale);
 
-  const workProjects = [
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const workProjects: Project[] = [
     {
       title: "OEE Dashboard Website",
       description: t("descriptionOEE"),
@@ -25,141 +32,80 @@ export default function Projects() {
       description: t("descriptionMonitorMachine"),
       image: "/images/monitorMachine.png",
     },
-     {
+    {
       title: "ESD Tester Website",
       description: t("descriptionESD"),
       image: "/images/esdReport.png",
     },
-  ];
-
-  const pocProjects = [
     {
-      title: "ESD Tester POC",
-      description: t("descriptionESD"),
-      image: "/images/pocNextAuth.png",
-      link: "https://github.com/yourusername/esd-tester",
+      title: "Blueprint Status Website",
+      description: t("descriptionBluePrintStatus"),
+      image: "/images/bluePrintRoom.png",
     },
   ];
 
-  const renderProjectCard = (project: any, index: number) => (
-    <motion.div
-      key={index}
-      className="flex h-[300px] bg-gray-500 rounded-b-2xl overflow-hidden flex-col hover:shadow-2xl transition-shadow duration-300"
-      whileHover={{ scale: 1.03 }}
-      transition={{ type: "spring", stiffness: 300 }}
-    >
-      <div className="relative w-full h-[180px] bg-gray-100">
-        <Image
-          src={project.image}
-          alt={project.title}
-          fill
-          className="object-cover p-4"
-        />
-      </div>
-      <div className="p-4 text-left flex flex-col flex-1">
-        <h3 className="text-xl font-semibold text-white mb-2">
-          {project.title}
-        </h3>
-        <motion.button
-          onClick={() => setSelectedProject(project)}
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          whileHover={{ scale: 1.05, rotate: 1 }}
-          whileTap={{ scale: 0.95 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{
-            delay: index * 0.2,
-            duration: 0.5,
-            ease: "easeOut",
-          }}
-         className="inline-block mt-auto px-4 py-1 bg-gradient-to-bl from-blue-200 to-gray-700 text-white text-sm font-bold rounded hover:opacity-90 self-start shadow-md cursor-pointer"
-
-        >
-          See more
-        </motion.button>
-      </div>
-    </motion.div>
-  );
+  const pocProjects: Project[] = [
+    {
+      title: "Next Auth POC",
+      description: t("descriptionNextAuth"),
+      image: "/images/pocNextAuth.png",
+      link: "https://github.com/yourusername/esd-tester",
+    },
+    {
+      title: "Scada Dashboard POC",
+      description: t("descriptionScada"),
+      image: "/images/pocScada.png",
+      link: "https://github.com/yourusername/pocScada.png",
+    },
+  ];
 
   return (
-    <div className="min-h-screen py-16 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
-          {t("title")}
-        </h2>
+    <div className="w-screen bg-white py-10 pb-14 px-4 md:px-10 flex justify-center">
+      <div className="w-full max-w-7xl flex flex-col items-center gap-2">
+        <div className={styles.baseText}>
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-green-700 via-green-500 via-30% to-gray-100 bg-clip-text text-transparent text-center">
+            {t("title")}
+          </h2>
+          <section className="mb-4 mt-6 w-full">
+            <h3 className="text-xl  text-left mb-6 bg-gradient-to-b from-gray-800 via-gray-500 via-30% to-gray-100 bg-clip-text text-transparent">
+              {t("workProjects")}
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+              {workProjects.map((project, index) => (
+                <ProjectCard
+                  key={index}
+                  project={project}
+                  index={index}
+                  onClick={() => setSelectedProject(project)}
+                />
+              ))}
+            </div>
+          </section>
 
-        <section className="mb-12">
-          <h3 className="text-2xl font-semibold text-gray-800 mb-6 text-left">
-            Work Projects
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-            {workProjects.map(renderProjectCard)}
-          </div>
-        </section>
-
-        <section>
-          <h3 className="text-2xl font-semibold text-gray-800 mb-6 text-left">
-            POC Projects
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-            {pocProjects.map((project, i) =>
-              renderProjectCard(project, i + workProjects.length)
-            )}
-          </div>
-        </section>
+          <section className="w-full">
+            <h3 className="text-xl text-left mb-6 bg-gradient-to-b from-gray-800 via-gray-500 via-30% to-gray-100 bg-clip-text text-transparent">
+              {t("pocProjects")}
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+              {pocProjects.map((project, index) => (
+                <ProjectCard
+                  key={index + workProjects.length}
+                  project={project}
+                  index={index + workProjects.length}
+                  onClick={() => setSelectedProject(project)}
+                />
+              ))}
+            </div>
+          </section>
+        </div>
       </div>
 
-      {/* Modal */}
       <AnimatePresence>
         {selectedProject && (
-          <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 px-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelectedProject(null)}
-          >
-            <motion.div
-              className="bg-white rounded-xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto relative"
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 50, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <h3 className="text-xl font-bold text-gray-800 mb-4">
-                {selectedProject.title}
-              </h3>
-              <div className="relative w-full h-48 mb-4">
-                <Image
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  fill
-                  className="object-cover p-4"
-                />
-              </div>
-              <p className="text-gray-700 indent-8 whitespace-pre-line">
-                {selectedProject.description}
-              </p>
-
-              {selectedProject.link && (
-                <a
-                  href={selectedProject.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                >
-                  View GitHub
-                </a>
-              )}
-
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="mt-4 ml-2 px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-800 cursor-pointer"
-              >
-                Close
-              </button>
-            </motion.div>
-          </motion.div>
+          <ProjectModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
         )}
       </AnimatePresence>
     </div>

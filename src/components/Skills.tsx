@@ -13,10 +13,11 @@ import {
   SiRaspberrypi,
   SiEspressif,
 } from "react-icons/si";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { BiLogoPostgresql } from "react-icons/bi";
 import { GrMysql } from "react-icons/gr";
+import { getStyles } from "@/styles";
 
 const skills = [
   {
@@ -76,7 +77,7 @@ const skills = [
   },
   {
     name: "MySQL",
-    icon: < GrMysql className="text-[#00758F]"/>,
+    icon: <GrMysql className="text-[#00758F]" />,
     delay: 0.8,
   },
   {
@@ -91,6 +92,8 @@ export default function Skills() {
   const isInView = useInView(ref, { once: true });
   const controls = useAnimation();
   const t = useTranslations("Skills");
+  const locale = useLocale();
+  const styles = getStyles(locale);
 
   useEffect(() => {
     if (isInView) {
@@ -108,36 +111,43 @@ export default function Skills() {
 
   return (
     <div
-      className="min-h-screen py-16 bg-gradient-to-b from-gray-100 via-yellow-100 to-yellow-300"
+      className="min-h-screen flex items-center py-20  justify-center  bg-gradient-to-b from-gray-100 via-yellow-100 to-yellow-300"
       ref={ref}
     >
-      <div className="max-w-4xl mx-auto px-4 text-center">
-        <p className="text-4xl font-bold mb-4 p-2 bg-gradient-to-r from-yellow-800 via-30% to-gray-100 bg-clip-text text-transparent drop-shadow-2xl">
-          {t("title")}
-        </p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 justify-items-center">
-          {skills.map((skill, i) => (
-            <motion.div
-              key={skill.name}
-              className="flex flex-col items-center mt-2"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: skill.delay }}
-              viewport={{ once: true }}
-            >
+      <div className={`${styles.baseText}`}>
+        <div>
+          <p className="flex justify-center text-4xl font-bold mb-4 p-2 bg-gradient-to-r from-yellow-500 via-30% to-gray-200 bg-clip-text text-transparent drop-shadow-2xl">
+            {t("title")}
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-8 justify-center items-center">
+
+            {skills.map((skill, i) => (
               <motion.div
-                custom={i}
-                animate={controls}
-                initial={{ scale: 1 }}
-                className="p-4 rounded-lg bg-gray-700 shadow-lg"
+                key={skill.name}
+                className="flex flex-col items-center mt-2"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: skill.delay }}
+                viewport={{ once: true }}
               >
-                <div className="text-5xl">{skill.icon}</div>
+                <motion.div
+                  custom={i}
+                  animate={controls}
+                  initial={{ scale: 1 }}
+                  className="p-4 rounded-lg bg-gray-700 shadow-lg"
+                >
+                  <div className="text-5xl">{skill.icon}</div>
+                </motion.div>
+                <motion.div
+                  custom={i}
+                  animate={controls}
+                  initial={{ scale: 1 }}
+                >
+                  <p className="mt-2 font-semibold text-black">{skill.name}</p>
+                </motion.div>
               </motion.div>
-              <motion.div custom={i} animate={controls} initial={{ scale: 1 }}>
-                <p className="mt-2 font-semibold text-black">{skill.name}</p>
-              </motion.div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
