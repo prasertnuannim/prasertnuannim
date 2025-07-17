@@ -25,8 +25,6 @@ export const metadata = {
     type: "website",
   },
 };
-
-
 const kalam = Kalam({
   variable: "--font-kalam",
   subsets: ["latin"],
