@@ -11,7 +11,7 @@ export default function Contact() {
   const locale = useLocale();
   const styles = getStyles(locale);
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-16">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-2 sm:px-4 md:px-8 lg:px-16">
       <div className={`${styles.baseText}`}>
         <motion.div
           className="w-full max-w-2xl bg-white rounded-xl shadow-lg p-6 flex flex-col md:flex-row items-center gap-6"
@@ -32,7 +32,7 @@ export default function Contact() {
           {/* Contact Info */}
           <div className="text-center md:text-left space-y-2">
             <h2 className="text-2xl font-bold text-gray-800">{t("title")}</h2>
-            <p className="text-gray-600">{t("description")}</p>
+            <p className="text-left leading-relaxed indent-4 text-gray-600">{t("description")}</p>
 
             <p className="text-gray-700">
               <a href="tel:+66830099743" className="text-black hover:underline">

@@ -15,7 +15,7 @@ type Props = {
 export default function ProjectCard({ project, index, onClick }: Props) {
   return (
     <motion.div
-      className="flex w-[220px] h-[240px] bg-gray-500 rounded-b-2xl overflow-hidden flex-col hover:shadow-2xl transition-shadow duration-300"
+      className="flex w-[220px] h-[240px] bg-gray-500 rounded-b-lg overflow-hidden flex-col hover:shadow-2xl transition-shadow duration-300"
       whileHover={{ scale: 1.03 }}
       transition={{ type: "spring", stiffness: 300 }}
     >

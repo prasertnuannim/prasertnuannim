@@ -111,7 +111,7 @@ export default function Skills() {
 
   return (
     <div
-      className="min-h-screen flex items-center py-20  justify-center  bg-gradient-to-b from-gray-100 via-yellow-100 to-yellow-300"
+      className="min-h-screen flex items-center py-2  justify-center  bg-gradient-to-b from-gray-100 via-yellow-100 to-yellow-300"
       ref={ref}
     >
       <div className={`${styles.baseText}`}>

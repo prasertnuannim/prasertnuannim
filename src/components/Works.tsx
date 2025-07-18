@@ -24,7 +24,7 @@ export default function Work() {
   ];
 
   return (
-    <div className="min-h-screen py-16 px-16 bg-gray-200">
+    <div className="min-h-screen py-16 px-2 sm:px-4 md:px-8 lg:px-16 bg-gray-200">
       <div className="max-w-2xl mx-auto px-4">
         <div className={`${styles.baseText}`}>
           <h2 className="text-3xl font-bold text-center bg-gradient-to-r from-gray-700 via-gray-500 via-30% to-gray-100 bg-clip-text text-transparent mb-4">
@@ -40,14 +40,14 @@ export default function Work() {
                 viewport={{ once: true }}
                 className="bg-gray-600 shadow-md rounded-lg p-6"
               >
-                <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
+                <h3 className="text-xl font-semibold text-white leading-relaxed">
                   {exp.position} –{" "}
-                  <span className="font-normal">{exp.company}</span>
+                  <span className="font-normal text-white">{exp.company}</span>
                 </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                <p className="text-sm text-mb-2 leading-relaxed">
                   {exp.period}
                 </p>
-                <p className="text-gray-700 dark:text-gray-300">
+                <p className="text-white leading-relaxed indent-4">
                   {exp.description}
                 </p>
               </motion.div>
