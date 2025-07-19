@@ -7,20 +7,21 @@ import { getLocale, getMessages } from "next-intl/server";
 export const metadata = {
   title: "Prasert Nuannim",
   description: "คำอธิบายเว็บไซต์ของคุณ",
-  metadataBase: new URL('https://prasertnuannim.github.io/'),
+  metadataBase: new URL('https://prasertnuannim.vercel.app'),
   openGraph: {
     title: "Prasert Nuannim",
     description: "พอร์ตโฟลิโอและผลงานของนักพัฒนา",
-    url: "https://prasertnuannim.github.io/",
+    url: "https://prasertnuannim.vercel.app",
     siteName: "Prasert Portfolio",
     images: [
       {
-        url: "/images/sertCG.jpg",
+        url: "https://prasertnuannim.vercel.app/images/sertCG.png",
         width: 1200,
         height: 630,
         alt: "Prasert's Portfolio",
       },
     ],
+    ite_name: "Prasert Nuannim",
     locale: "th_TH",
     type: "website",
   },
