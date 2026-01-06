@@ -46,6 +46,9 @@ export default async function RootLayout({
   const locale = await getLocale();
   return (
     <html className={`${kalam.variable} ${mitr.variable}`}>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+      </head>
       <body className="antialiased">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <SwitchLanguage />
