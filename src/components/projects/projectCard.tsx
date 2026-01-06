@@ -4,6 +4,7 @@ import Image from "next/image";
 
 type Props = {
   project: {
+    id?: string;     
     title: string;
     description: string;
     image: string;

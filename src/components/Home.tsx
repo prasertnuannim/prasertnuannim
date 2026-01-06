@@ -8,7 +8,7 @@ export default function Home() {
   const locale = useLocale();
   const styles = getStyles(locale);
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-tr from-gray-400 to-white text-gray-800 flex-col text-center px-16 py-8">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-tr from-gray-400 to-white text-gray-800 flex-col text-center px-4 sm:px-8 md:px-16 py-8">
       <div className={styles.baseText}>
         <div className="w-full flex justify-center">
           <Image

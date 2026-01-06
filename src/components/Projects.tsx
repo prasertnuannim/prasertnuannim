@@ -8,6 +8,7 @@ import ProjectCard from "./projects/projectCard";
 import ProjectModal from "./projects/projectModal";
 
 type Project = {
+  id?: string;
   title: string;
   description: string;
   image: string;
@@ -23,6 +24,7 @@ export default function Projects() {
 
   const workProjects: Project[] = [
     {
+      id: "oee-dashboard",
       title: "OEE Dashboard Website",
       description: t("descriptionOEE"),
       image: "/images/oeeDashboard.png",
@@ -42,15 +44,14 @@ export default function Projects() {
       description: t("descriptionBluePrintStatus"),
       image: "/images/bluePrintRoom.png",
     },
+    {
+      title: "Boilerplate",
+      description: t("descriptionNextAuth"),
+      image: "/images/boilerplate.png",
+    },
   ];
 
   const pocProjects: Project[] = [
-    {
-      title: "Next Auth POC",
-      description: t("descriptionNextAuth"),
-      image: "/images/pocNextAuth.png",
-      link: "https://github.com/yourusername/esd-tester",
-    },
     {
       title: "Scada Dashboard POC",
       description: t("descriptionScada"),
@@ -60,7 +61,7 @@ export default function Projects() {
   ];
 
   return (
-    <div className="w-screen bg-white py-10 pb-14 px-4 md:px-10 flex justify-center">
+    <div className="w-screen bg-white py-10 pb-20 md:pb-14 px-2 sm:px-4 md:px-10 flex justify-center">
       <div className="w-full max-w-7xl flex flex-col items-center gap-2">
         <div className={styles.baseText}>
           <h2 className="text-4xl font-bold bg-gradient-to-r from-green-700 via-green-500 via-30% to-gray-100 bg-clip-text text-transparent text-center">

@@ -27,7 +27,7 @@ export default function ProjectModal({ project, onClose }: Props) {
   onClick={onClose}
 >
   <motion.div
-    className="bg-white rounded-xl p-6 w-full max-w-xl md:max-w-2xl max-h-[90vh] overflow-y-auto relative"
+    className="bg-white rounded-xl p-6 w-full max-w-xl md:max-w-2xl max-h-[90vh] overflow-y-auto relative shadow-2xl"
     initial={{ y: 50, opacity: 0 }}
     animate={{ y: 0, opacity: 1 }}
     exit={{ y: 50, opacity: 0 }}
@@ -36,12 +36,12 @@ export default function ProjectModal({ project, onClose }: Props) {
           <h3 className="text-xl font-bold text-gray-800 mb-4">
             {project.title}
           </h3>
-          <div className="relative w-full flex justify-center h-48 mb-4">
+          <div className="relative w-full flex justify-center h-auto mb-4">
             <Image
               src={project.image}
               alt={project.title}
               width={400}
-              height={240}
+              height={340}
               className="object-cover p-2 shadow-2xl"
             />
           </div>
