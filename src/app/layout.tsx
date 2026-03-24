@@ -1,18 +1,17 @@
+import { LocaleProvider } from "@/components/IntlProvider";
 import SwitchLanguage from "@/components/SwitchLanguage";
 import "./globals.css";
+import type { Metadata, Viewport } from "next";
 import { Kalam, Mitr } from "next/font/google";
-import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getMessages } from "next-intl/server";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Prasert Nuannim",
-  description: "คำอธิบายเว็บไซต์ของคุณ",
-  metadataBase: new URL('https://prasertnuannim.vercel.app'),
+  description: "Portfolio and projects by Prasert Nuannim.",
+  metadataBase: new URL("https://prasertnuannim.vercel.app"),
   openGraph: {
     title: "Prasert Nuannim",
     description: "พอร์ตโฟลิโอและผลงานของนักพัฒนา",
     url: "https://prasertnuannim.vercel.app",
-    siteName: "Prasert Portfolio",
     images: [
       {
         url: "https://prasertnuannim.vercel.app/images/sertCG.png",
@@ -21,11 +20,18 @@ export const metadata = {
         alt: "Prasert's Portfolio",
       },
     ],
-    ite_name: "Prasert Nuannim",
+    siteName: "Prasert Nuannim",
     locale: "th_TH",
     type: "website",
   },
 };
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 const kalam = Kalam({
   variable: "--font-kalam",
   subsets: ["latin"],
@@ -37,23 +43,19 @@ const mitr = Mitr({
   weight: ["400", "700"],
   variable: "--font-mitr",
 });
-export default async function RootLayout({
+
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const messages = await getMessages();
-  const locale = await getLocale();
   return (
-    <html className={`${kalam.variable} ${mitr.variable}`}>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-      </head>
+    <html lang="en" className={`${kalam.variable} ${mitr.variable}`}>
       <body className="antialiased">
-        <NextIntlClientProvider locale={locale} messages={messages}>
+        <LocaleProvider>
           <SwitchLanguage />
           {children}
-        </NextIntlClientProvider>
+        </LocaleProvider>
       </body>
     </html>
   );

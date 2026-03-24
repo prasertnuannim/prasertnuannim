@@ -1,19 +1,28 @@
 {
   "Home": {
-    "welcomeMessage": "Welcome to my personal world a small space brimming with inspiration, creativity, and limitless journeys through the universe of technology."
+    "welcomeMessage": "Welcome to my portfolio.\nThis is a space where I share the work I have done and the experience I have gained through software development.\nIt includes work in application development, system design, and the integration of technology for practical use."
   },
   "About": {
     "title": "About Me",
-    "description1": "Hi, I'm Prasert Nuannim\n\nI'm a web developer specializing in building high-performance, scalable, and user-friendly web applications using the full capabilities of Next.js — including SSR, SSG, dynamic routing, API routes, middleware, and SEO optimization.\n\nI'm proficient in TypeScript for type-safe development, Redux for managing complex application state, and Tailwind CSS for crafting fast and responsive user interfaces.\n\nI also have hands-on experience connecting with both SQL databases (such as MySQL and PostgreSQL), and using Node.js to build robust backend services and APIs.",
-    "description2": "My journey in tech began with over 10 years of experience in IT Support, where I developed strong skills in system management, technical troubleshooting, and systems thinking.\n\nThis experience shaped the way I approach software development — with a deep understanding of backend systems, paired with a focus on intuitive and scalable user experiences.\n\nAlong the way, I’ve had the opportunity to work on web projects involving IoT and AI image processing, allowing me to bridge the gap between hardware integration, data handling, and building interactive front-end applications."
+    "description1": "I started my IT career in System Administration, where I was responsible for managing infrastructure and servers, as well as troubleshooting issues in real-world environments. This experience gave me a strong foundation in understanding how systems operate at a deeper level, including their limitations, stability, and the challenges of working in production environments.",
+    "description2": "Building on that foundation, I transitioned into IoT development, where I worked on MCU-based systems for machine control and data collection, integrating them with databases through APIs. This later evolved into developing web applications for real-time monitoring, visualization, and data analysis. Today, I work as a Fullstack Developer, with Next.js, TypeScript, Node.js, Go (Golang), and PostgreSQL as my primary technology stack. I have experience designing systems that seamlessly connect infrastructure, IoT systems, and applications to operate efficiently as a whole. With a solid understanding of systems, IoT, and software development, I am able to build solutions that balance business requirements, system stability, and development efficiency."
   },
   "Skills": {
-    "title": "My Skills"
+    "title": "My Skills",
+    "description": "Tools and technologies I use to build web applications, backend services, dashboards, databases, and hardware-integrated solutions."
   },
   "Projects": {
     "title": "My Projects",
     "workProjects": "Work Projects",
     "pocProjects": "POC Projects",
+    "titleOEE": "OEE Dashboard Website",
+    "titleMonitorMachine": "Monitor Machine Website",
+    "titleESD": "ESD Tester Website",
+    "titleBlueprintStatus": "Blueprint Status Website",
+    "titleScada": "Scada Dashboard POC",
+    "titleBoilerplate": "Boilerplate",
+    "seeMore": "See more",
+    "close": "Close",
     "descriptionOEE": "Developed a web application to display real-time OEE dashboard metrics for IoT systems, including run hours, loss hours, output, and summarized losses. Built interactive dashboards using React (TSX), Chart.js, Material UI, and Redux.\nImplemented a Node.js backend and established a connection to a MySQL server. Leveraged stored procedures in MySQL to optimize complex data queries for OEE metrics.",
     "descriptionMonitorMachine": "Developed a full-stack web application for updating machine data and tracking real-time machine status, integrating IoT monitoring using Redux Toolkit, Tailwind CSS, Next.js, NextAuth, and NextUI on the frontend, with a Node.js backend connected to a MySQL server. The system allows authorized users to sign in and modify machine states or related data, while admins can manage user accounts—including creating, editing, deleting, assigning permissions, and resetting passwords—through a centralized user table. Regular users are granted access to update machine information according to their roles and permissions.",
     "descriptionESD": "Developed an Anti-Static ESD Access Control Tester system designed to work with legacy hardware, using a microcontroller to monitor employee status, control door access, and store logs in a MySQL database. The frontend was built with Next.js, Redux Toolkit, Tailwind CSS, and NextAuth, while the backend was developed with Node.js. Raspberry Pi runs a Python script to communicate with the ESD testing apparatus. The system includes a data grid for managing employee data (add, edit, delete, display), and an ESD tester display that prompts users to enter their employee ID, verifies access permissions to the production line, and counts signal points to validate results from the ESD machine before sending responses to the BD system.",
@@ -28,6 +37,9 @@
   },
   "contact": {
     "title": "Contact Me",
-    "description": "If you're interested in discussing new projects or have questions about my skills and experience, feel free to reach out via email or social media below."
+    "description": "If you're interested in discussing new projects or have questions about my skills and experience, feel free to reach out via email or social media below.",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "lineButton": "Message on LINE"
   }
 }

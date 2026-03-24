@@ -27,7 +27,10 @@ export default function Navbar() {
           }
         })
       },
-      { threshold: 0.1 }
+      {
+        rootMargin: '-40% 0px -40% 0px',
+        threshold: 0,
+      }
     )
     navItems.forEach(item => {
       const section = document.getElementById(item.id)
@@ -72,7 +75,7 @@ export default function Navbar() {
               <motion.a
                 key={item.id}
                 href={`#${item.id}`}
-                className="flex flex-col items-center text-xs"
+                className="flex flex-col items-center text-sm"
                 whileHover={{ scale: 1.1 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >

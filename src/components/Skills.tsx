@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   SiJavascript,
   SiReact,
   SiNextdotjs,
   SiTailwindcss,
+  SiShadcnui,
   SiNodedotjs,
-  SiMui,
+  SiGo,
   SiArduino,
   SiRaspberrypi,
   SiEspressif,
@@ -23,28 +23,37 @@ const skills = [
   {
     name: "JavaScript",
     icon: <SiJavascript className="text-yellow-400" />,
-    delay: 0,
+    category: "Frontend",
   },
-  { name: "React", icon: <SiReact className="text-cyan-300" />, delay: 0.2 },
+  {
+    name: "React",
+    icon: <SiReact className="text-cyan-400" />,
+    category: "Frontend",
+  },
   {
     name: "Next.js",
-    icon: <SiNextdotjs className="text-black dark:text-white" />,
-    delay: 0.4,
+    icon: <SiNextdotjs className="text-black dark:text-black" />,
+    category: "Frontend",
   },
   {
     name: "Tailwind CSS",
-    icon: <SiTailwindcss className="text-cyan-300" />,
-    delay: 0.6,
+    icon: <SiTailwindcss className="text-cyan-400" />,
+    category: "UI",
   },
   {
-    name: "MUI",
-    icon: <SiMui className="text-blue-600" />,
-    delay: 0.6,
+    name: "shadcn/ui",
+    icon: <SiShadcnui className="text-slate-800" />,
+    category: "UI",
   },
   {
     name: "Node.js",
     icon: <SiNodedotjs className="text-green-500" />,
-    delay: 0.8,
+    category: "Backend",
+  },
+  {
+    name: "Go",
+    icon: <SiGo className="text-cyan-500" />,
+    category: "Backend",
   },
   {
     name: "Python",
@@ -54,102 +63,99 @@ const skills = [
         alt="Python Logo"
         width={48}
         height={48}
-        className="w-12 h-12"
+        className="h-12 w-12 object-contain"
         priority
       />
     ),
-    delay: 0.8,
+    category: "Hardware",
   },
   {
     name: "Arduino",
     icon: <SiArduino className="text-teal-500" />,
-    delay: 0.8,
+    category: "Hardware",
   },
   {
-    name: "Raspberry Ii",
+    name: "Raspberry Pi",
     icon: <SiRaspberrypi className="text-[#C51A4A]" />,
-    delay: 0.8,
+    category: "Hardware",
   },
   {
-    name: "Micro Controller",
+    name: "Microcontroller",
     icon: <SiEspressif className="text-[#E7352C]" />,
-    delay: 0.8,
+    category: "Hardware",
   },
   {
     name: "MySQL",
     icon: <GrMysql className="text-[#00758F]" />,
-    delay: 0.8,
+    category: "Database",
   },
   {
-    name: "Postgresql",
-    icon: <BiLogoPostgresql className="text-[#336791] " />,
-    delay: 0.8,
+    name: "PostgreSQL",
+    icon: <BiLogoPostgresql className="text-[#336791]" />,
+    category: "Database",
   },
 ];
 
 export default function Skills() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const controls = useAnimation();
   const t = useTranslations("Skills");
   const locale = useLocale();
   const styles = getStyles(locale);
 
-  useEffect(() => {
-    if (isInView) {
-      controls.start((i) => ({
-        scale: [1, 1.1, 1],
-        transition: {
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: skills[i].delay,
-        },
-      }));
-    }
-  }, [isInView, controls]);
-
   return (
-    <div
-      className="min-h-screen flex items-center py-2  justify-center  bg-gradient-to-b from-gray-100 via-yellow-100 to-yellow-300"
-      ref={ref}
-    >
-      <div className={`${styles.baseText}`}>
-        <div>
-          <p className="flex justify-center text-4xl font-bold mb-4 p-2 bg-gradient-to-r from-yellow-500 via-30% to-gray-200 bg-clip-text text-transparent drop-shadow-2xl">
-            {t("title")}
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-8 justify-center items-center">
+    <section className="section-ambient relative overflow-hidden px-4 py-20 sm:px-6 md:px-10">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-[-60px] top-[-40px] h-72 w-72 rounded-full bg-green-100/60 blur-3xl" />
+        <div className="absolute right-[-50px] top-1/3 h-80 w-80 rounded-full bg-lime-100/45 blur-3xl" />
+        <div className="absolute bottom-[-70px] left-1/3 h-72 w-72 rounded-full bg-emerald-100/40 blur-3xl" />
+      </div>
 
-            {skills.map((skill, i) => (
-              <motion.div
-                key={skill.name}
-                className="flex flex-col items-center mt-2"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: skill.delay }}
-                viewport={{ once: true }}
-              >
-                <motion.div
-                  custom={i}
-                  animate={controls}
-                  initial={{ scale: 1 }}
-                  className="p-4 rounded-lg bg-gray-700 shadow-lg"
-                >
+      <div className={`relative mx-auto max-w-7xl ${styles.baseText}`}>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.5 }}
+          className="mx-auto mb-14 max-w-3xl text-center"
+        >
+
+          <h2 className="text-4xl font-extrabold tracking-tight text-transparent sm:text-5xl md:text-6xl bg-gradient-to-r from-yellow-600 via-amber-500 to-green-400 bg-clip-text">
+            {t("title")}
+          </h2>
+
+          <p className="mt-5 text-base leading-8 text-gray-600 sm:text-lg">
+            {t("description")}
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6">
+          {skills.map((skill, index) => (
+            <motion.div
+              key={skill.name}
+              initial={{ opacity: 0, y: 24, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+              whileHover={{ y: -6, scale: 1.02 }}
+              className="group relative overflow-hidden rounded-3xl border border-white/70 bg-white/80 p-5 shadow-[0_12px_40px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-300"
+            >
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white via-transparent to-yellow-50 opacity-0 transition duration-300 group-hover:opacity-100" />
+              <div className="relative flex flex-col items-center text-center">
+                <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-gray-50 to-yellow-50 shadow-inner">
                   <div className="text-5xl">{skill.icon}</div>
-                </motion.div>
-                <motion.div
-                  custom={i}
-                  animate={controls}
-                  initial={{ scale: 1 }}
-                >
-                  <p className="mt-2 font-semibold text-black">{skill.name}</p>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
+                </div>
+
+                <span className="mb-2 rounded-full bg-gray-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-gray-500">
+                  {skill.category}
+                </span>
+
+                <p className="text-base font-semibold text-gray-900 sm:text-lg">
+                  {skill.name}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

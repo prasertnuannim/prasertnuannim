@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 export default function SectionTracker() {
   useEffect(() => {
-    const sectionIds = ["home", "about", "skills", "projects", "contact"];
+    const sectionIds = ["home", "about", "skills", "projects", "works", "contact"];
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -15,7 +15,8 @@ export default function SectionTracker() {
         });
       },
       {
-        threshold: 0.5,
+        rootMargin: "-40% 0px -40% 0px",
+        threshold: 0,
       }
     );
 
