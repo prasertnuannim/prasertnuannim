@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7faf5;
+  --foreground: #17212b;
 }
 
 @theme inline {
@@ -23,6 +23,15 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.section-ambient {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.34) 0%,
+    rgba(255, 255, 255, 0.08) 26%,
+    rgba(255, 255, 255, 0.18) 100%
+  );
 }
 
 /* styles/globals.css */
@@ -72,6 +81,14 @@ body {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 1.5rem;
+  scroll-padding-bottom: 6rem;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-bottom: 2rem;
+  }
 }
 .my-masonry-column {
   padding-left: 1rem; /* gutter size */
@@ -80,4 +97,13 @@ html {
 
 .my-masonry-column > div {
   margin-bottom: 1rem;
+}
+
+body.project-modal-open .switch-language {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.9);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }

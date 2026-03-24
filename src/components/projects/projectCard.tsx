@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 type Props = {
@@ -14,13 +15,15 @@ type Props = {
 };
 
 export default function ProjectCard({ project, index, onClick }: Props) {
+  const t = useTranslations("Projects");
+
   return (
     <motion.div
-      className="flex w-[220px] h-[240px] bg-gray-500 rounded-b-lg overflow-hidden flex-col hover:shadow-2xl transition-shadow duration-300"
+      className="flex h-[260px] w-[240px] flex-col overflow-hidden rounded-b-lg bg-gray-500 transition-shadow duration-300 hover:shadow-2xl"
       whileHover={{ scale: 1.03 }}
       transition={{ type: "spring", stiffness: 300 }}
     >
-      <div className="relative w-full h-[180px] bg-gray-100">
+      <div className="relative h-[190px] w-full bg-gray-100">
         <Image
           src={project.image}
           alt={project.title}
@@ -29,8 +32,8 @@ export default function ProjectCard({ project, index, onClick }: Props) {
           className="object-cover rounded-t-xl w-full p-2"
         />
       </div>
-      <div className="p-4 text-left flex flex-col flex-1">
-        <h3 className="text-[16px] font-semibold text-white mb-2">
+      <div className="flex flex-1 flex-col p-4 text-left">
+        <h3 className="mb-2 text-lg font-semibold text-white sm:text-xl">
           {project.title}
         </h3>
         <motion.button
@@ -41,9 +44,9 @@ export default function ProjectCard({ project, index, onClick }: Props) {
           whileTap={{ scale: 0.95 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ delay: index * 0.2, duration: 0.5, ease: "easeOut" }}
-          className="inline-block mt-auto px-4 py-1 bg-gradient-to-bl from-blue-200 to-gray-700 text-white text-sm font-bold rounded hover:opacity-90 self-start shadow-md"
+          className="mt-auto inline-block self-start rounded bg-gradient-to-bl from-blue-200 to-gray-700 px-4 py-1.5 text-base font-bold text-white shadow-md hover:opacity-90"
         >
-          See more
+          {t("seeMore")}
         </motion.button>
       </div>
     </motion.div>

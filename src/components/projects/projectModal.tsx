@@ -1,8 +1,10 @@
 "use client";
+import SwitchLanguage from "@/components/SwitchLanguage";
 import { getStyles } from "@/styles";
 import { motion } from "framer-motion";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
+import { useEffect } from "react";
 
 type Props = {
   project: {
@@ -15,8 +17,18 @@ type Props = {
 };
 
 export default function ProjectModal({ project, onClose }: Props) {
+  const t = useTranslations("Projects");
   const locale = useLocale();
   const styles = getStyles(locale);
+
+  useEffect(() => {
+    document.body.classList.add("project-modal-open");
+
+    return () => {
+      document.body.classList.remove("project-modal-open");
+    };
+  }, []);
+
   return (
     <div className={styles.baseText}>
   <motion.div
@@ -27,15 +39,18 @@ export default function ProjectModal({ project, onClose }: Props) {
   onClick={onClose}
 >
   <motion.div
-    className="bg-white rounded-xl p-6 w-full max-w-xl md:max-w-2xl max-h-[90vh] overflow-y-auto relative shadow-2xl"
+    className="relative max-h-[90vh] w-full max-w-xl overflow-y-auto rounded-xl bg-white p-6 shadow-2xl md:max-w-2xl"
     initial={{ y: 50, opacity: 0 }}
     animate={{ y: 0, opacity: 1 }}
     exit={{ y: 50, opacity: 0 }}
     onClick={(e) => e.stopPropagation()}
   >
-          <h3 className="text-xl font-bold text-gray-800 mb-4">
-            {project.title}
-          </h3>
+          <div className="mb-4 flex items-start justify-between gap-4">
+            <h3 className="text-2xl font-bold text-gray-800 sm:text-3xl">
+              {project.title}
+            </h3>
+            <SwitchLanguage variant="modal" />
+          </div>
           <div className="relative w-full flex justify-center h-auto mb-4">
             <Image
               src={project.image}
@@ -45,14 +60,14 @@ export default function ProjectModal({ project, onClose }: Props) {
               className="object-cover p-2 shadow-2xl"
             />
           </div>
-          <p className="text-gray-700 indent-8 whitespace-pre-line">
+          <p className="whitespace-pre-line indent-8 text-base leading-8 text-gray-700 sm:text-lg sm:leading-9">
             {project.description}
           </p>
           <button
             onClick={onClose}
-            className="mt-4 ml-2 px-4 py-1 bg-gray-800 text-white rounded hover:bg-gray-500 cursor-pointer"
+            className="mt-4 ml-2 cursor-pointer rounded bg-gray-800 px-4 py-1.5 text-base text-white hover:bg-gray-500 sm:text-lg"
           >
-            Close
+            {t("close")}
           </button>
         </motion.div>
       </motion.div>

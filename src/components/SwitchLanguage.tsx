@@ -1,33 +1,20 @@
 "use client";
-import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useLocaleState } from "@/components/IntlProvider";
+import { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 
-export default function SwitchLanguage() {
-  const [locale, setLocale] = useState<string>("");
-  const router = useRouter();
+type SwitchLanguageProps = {
+  variant?: "floating" | "modal";
+};
+
+export default function SwitchLanguage({
+  variant = "floating",
+}: SwitchLanguageProps) {
+  const { locale, setLocale } = useLocaleState();
   const textControls = useAnimation();
 
-  useEffect(() => {
-    const cookieLocale = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("NEXT_LOCALE="))
-      ?.split("=")[1];
-    if (cookieLocale) {
-      setLocale(cookieLocale);
-    } else {
-      const browserLocale = navigator.language.slice(0, 2);
-      setLocale(browserLocale);
-      document.cookie = `NEXT_LOCALE=${browserLocale};`;
-      router.refresh();
-    }
-  }, [router]);
-
   const toggleLocale = () => {
-    const newLocale = locale === "th" ? "en" : "th";
-    setLocale(newLocale);
-    document.cookie = `NEXT_LOCALE=${newLocale};`;
-    router.refresh();
+    setLocale(locale === "th" ? "en" : "th");
   };
 
   useEffect(() => {
@@ -45,18 +32,30 @@ export default function SwitchLanguage() {
     return () => clearInterval(interval);
   }, [textControls]);
 
+  const isModal = variant === "modal";
+
   return (
-    <div className="fixed right-4 z-50 p-5">
+    <div
+      className={
+        isModal
+          ? "shrink-0"
+          : "switch-language fixed right-4 z-50 p-5"
+      }
+    >
       <button
         onClick={toggleLocale}
-        className="w-12 h-12 rounded-full backdrop-blur-md text-gray-400 font-bold border border-gray-300 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:cursor-pointer hover:bg-gray-200"
+        className={
+          isModal
+            ? "flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white text-sm font-bold text-gray-500 shadow-md transition-all duration-300 hover:cursor-pointer hover:bg-gray-100 hover:text-gray-700"
+            : "flex h-12 w-12 items-center justify-center rounded-full border border-gray-300 text-gray-400 font-bold shadow-lg backdrop-blur-md transition-all duration-300 hover:cursor-pointer hover:bg-gray-200 hover:shadow-xl"
+        }
       >
         <motion.span
           animate={textControls}
           initial={{ rotate: 0 }}
           className="block"
         >
-          {locale === "th" ? "TH" : "EN"}
+          {locale.toUpperCase()}
         </motion.span>
       </button>
     </div>
