@@ -43,9 +43,9 @@ export default function Projects() {
         image: "/images/esdReport.png",
       },
       {
-        id: "blueprint-status",
-        title: t("titleBlueprintStatus"),
-        description: t("descriptionBluePrintStatus"),
+        id: "smart-or",
+        title: t("titleSmartOr"),
+        description: t("descriptionSmartOr"),
         image: "/images/bluePrintRoom.png",
       },
        {
