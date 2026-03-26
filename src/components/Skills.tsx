@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import {
+
+  SiDocker,
   SiJavascript,
   SiReact,
   SiNextdotjs,
@@ -17,6 +19,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { BiLogoPostgresql } from "react-icons/bi";
 import { GrMysql } from "react-icons/gr";
+
 import { getStyles } from "@/styles";
 
 const skills = [
@@ -36,6 +39,19 @@ const skills = [
     category: "Frontend",
   },
   {
+    name: "NextAuth",
+    icon: (
+      <Image
+        src="/icons/nextauth.png"
+        alt="NextAuth Logo"
+        width={48}
+        height={53}
+        className="h-12 w-auto object-contain"
+      />
+    ),
+    category: "Auth",
+  },
+  {
     name: "Tailwind CSS",
     icon: <SiTailwindcss className="text-cyan-400" />,
     category: "UI",
@@ -49,6 +65,11 @@ const skills = [
     name: "Node.js",
     icon: <SiNodedotjs className="text-green-500" />,
     category: "Backend",
+  },
+  {
+    name: "Docker",
+    icon: <SiDocker className="text-[#2496ED]" />,
+    category: "DevOps",
   },
   {
     name: "Go",
@@ -102,14 +123,8 @@ export default function Skills() {
   const styles = getStyles(locale);
 
   return (
-    <section className="section-ambient relative overflow-hidden px-4 py-20 sm:px-6 md:px-10">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-[-60px] top-[-40px] h-72 w-72 rounded-full bg-green-100/60 blur-3xl" />
-        <div className="absolute right-[-50px] top-1/3 h-80 w-80 rounded-full bg-lime-100/45 blur-3xl" />
-        <div className="absolute bottom-[-70px] left-1/3 h-72 w-72 rounded-full bg-emerald-100/40 blur-3xl" />
-      </div>
-
-      <div className={`relative mx-auto max-w-7xl ${styles.baseText}`}>
+    <section className="relative px-4 py-20 sm:px-6 md:px-10">
+      <div className={`mx-auto max-w-7xl ${styles.baseText}`}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

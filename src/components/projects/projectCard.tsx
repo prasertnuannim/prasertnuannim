@@ -1,54 +1,63 @@
 "use client";
+
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 type Props = {
   project: {
-    id?: string;     
     title: string;
     description: string;
     image: string;
+    link?: string;
   };
-  index: number;
   onClick: () => void;
 };
 
-export default function ProjectCard({ project, index, onClick }: Props) {
+export default function ProjectCard({
+  project,
+  onClick,
+}: Props) {
   const t = useTranslations("Projects");
 
   return (
-    <motion.div
-      className="flex h-[260px] w-[240px] flex-col overflow-hidden rounded-b-lg bg-gray-500 transition-shadow duration-300 hover:shadow-2xl"
-      whileHover={{ scale: 1.03 }}
-      transition={{ type: "spring", stiffness: 300 }}
+    <motion.button
+      type="button"
+      onClick={onClick}
+      aria-label={project.title}
+      whileHover={{ y: -8, scale: 1.01 }}
+      whileTap={{ scale: 0.99 }}
+      transition={{ type: "spring", stiffness: 260, damping: 22 }}
+      className="group relative mx-auto flex h-[22rem] w-full max-w-[320px] flex-col overflow-hidden rounded-b-[20px] border border-slate-200/80 bg-white/92 text-left shadow-[0_18px_60px_rgba(15,23,42,0.12)] transition-shadow duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/60 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
     >
-      <div className="relative h-[190px] w-full bg-gray-100">
-        <Image
-          src={project.image}
-          alt={project.title}
-          width={400}
-          height={240}
-          className="object-cover rounded-t-xl w-full p-2"
-        />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(34,197,94,0.16),_transparent_42%)] opacity-0 transition duration-500 group-hover:opacity-100" />
+
+      <div
+        className="relative flex h-[20rem] items-center justify-center overflow-hidden border-b border-slate-200/70 bg-[linear-gradient(180deg,rgba(248,250,252,0.98),rgba(226,232,240,0.9))] p-3"
+      >
+        <div
+          className="relative h-full w-full overflow-hidden rounded-[5px] border border-black/5 bg-white shadow-[0_12px_34px_rgba(15,23,42,0.16)]"
+        >
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            sizes="(min-width: 1280px) 320px, 320px, 100vw"
+            className="object-contain p-1 transition duration-700 group-hover:scale-[1.02]"
+          />
+        </div>
       </div>
-      <div className="flex flex-1 flex-col p-4 text-left">
-        <h3 className="mb-2 text-lg font-semibold text-white sm:text-xl">
+
+      <div className="relative flex flex-1 flex-col justify-between p-5 sm:p-6">
+        <h3 className="flex min-h-[5.5rem] items-center justify-center text-center text-xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-2xl">
           {project.title}
         </h3>
-        <motion.button
-          onClick={onClick}
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          whileHover={{ scale: 1.05, rotate: 1 }}
-          whileTap={{ scale: 0.95 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ delay: index * 0.2, duration: 0.5, ease: "easeOut" }}
-          className="mt-auto inline-block self-start rounded bg-gradient-to-bl from-blue-200 to-gray-700 px-4 py-1.5 text-base font-bold text-white shadow-md hover:opacity-90"
-        >
-          {t("seeMore")}
-        </motion.button>
+
+        <div className="mt-6 flex items-center gap-3 pt-5 text-xs font-semibold uppercase tracking-[0.24em] text-emerald-700">
+          <span className="h-px flex-1 bg-current/35" />
+          <span>{t("seeMore")}</span>
+        </div>
       </div>
-    </motion.div>
+    </motion.button>
   );
 }

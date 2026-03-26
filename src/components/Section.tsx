@@ -1,21 +1,17 @@
-type SectionProps = Readonly<{
-  id: string
-  title: string
-  children: React.ReactNode
-}>
+import type { ReactNode } from "react";
 
-export default function Section({
-  id,
-  title,
-  children,
-}: SectionProps) {
+type SectionProps = Readonly<{
+  id: string;
+  children: ReactNode;
+}>;
+
+export default function Section({ id, children }: SectionProps) {
   return (
-    <section
+    <div
       id={id}
-      className="min-h-screen scroll-mt-4 px-4 py-4 pb-20 md:pb-4 border-b border-gray-200"
+      className="min-h-screen scroll-mt-6 md:scroll-mt-8"
     >
-      <h2 className="text-2xl font-bold mb-4">{title}</h2>
       {children}
-    </section>
-  )
+    </div>
+  );
 }

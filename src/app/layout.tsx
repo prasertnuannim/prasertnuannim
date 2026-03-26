@@ -1,3 +1,4 @@
+import GalaxySectionBackground from "@/components/GalaxySectionBackground";
 import { LocaleProvider } from "@/components/IntlProvider";
 import SwitchLanguage from "@/components/SwitchLanguage";
 import "./globals.css";
@@ -51,10 +52,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${kalam.variable} ${mitr.variable}`}>
-      <body className="antialiased">
+      <body className="bg-black text-white antialiased">
         <LocaleProvider>
-          <SwitchLanguage />
-          {children}
+          <div className="relative min-h-screen overflow-x-hidden">
+            <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0">
+              <GalaxySectionBackground />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(0,0,0,0.18),_transparent_42%)]" />
+            </div>
+
+            <div className="relative z-10">
+              <SwitchLanguage />
+              {children}
+            </div>
+          </div>
         </LocaleProvider>
       </body>
     </html>

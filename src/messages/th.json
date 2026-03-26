@@ -19,6 +19,9 @@
     "titleMonitorMachine": "เว็บไซต์ติดตามสถานะเครื่องจักร",
     "titleESD": "เว็บไซต์ระบบ ESD Tester",
     "titleBlueprintStatus": "เว็บไซต์จัดการสถานะ Blueprint",
+    "titlePawcare": "Pawcare",
+    "titleOptSence": "Opt Sense",
+    "titleUniva": "Univa",
     "titleScada": "POC แดชบอร์ด SCADA",
     "titleBoilerplate": "Boilerplate",
     "seeMore": "ดูเพิ่มเติม",
@@ -28,6 +31,9 @@
     "descriptionESD": "พัฒนาระบบ Anti-Static ESD Access Control Tester สำหรับใช้งานร่วมกับฮาร์ดแวร์รุ่นเก่า โดยใช้ไมโครคอนโทรลเลอร์ในการตรวจสอบสถานะพนักงาน ควบคุมการเปิด-ปิดประตู และบันทึกข้อมูลลงฐานข้อมูล MySQL โดยมีการพัฒนา Frontend ด้วย Next.js, Redux Toolkit, Tailwind CSS และ NextAuth และ Backend ด้วย Node.js ขณะเดียวกัน Raspberry Pi ทำงานด้วยสคริปต์ภาษา Python เพื่อสื่อสารกับเครื่องทดสอบ ESD ระบบประกอบด้วยตารางข้อมูลที่สามารถเพิ่ม แก้ไข ลบ และแสดงข้อมูลพนักงาน และหน้าจอ ESD Tester ที่ให้พนักงานระบุรหัสพนักงาน ตรวจสอบสิทธิ์การเข้าถึงไลน์ผลิต และนับจุดสัญญาณเพื่อตรวจสอบค่าที่ได้จากเครื่อง ESD ก่อนส่งผลกลับไปยังระบบ BD\n",
      "descriptionNextAuth": "พัฒนาเว็บแอปพลิเคชันด้วย Next.js โดยใช้ Tailwind CSS สำหรับออกแบบ UI และ NextAuth สำหรับระบบยืนยันตัวตน ฝั่ง Backend ออกแบบตามแนวคิด Clean Architecture และ Domain-Driven Design แยกความรับผิดชอบของ Domain, Service และ Infrastructure อย่างชัดเจน ใช้ Prisma เป็น ORM เชื่อมต่อกับ PostgreSQL พร้อมการจัดการข้อมูลผ่าน DTO, Schema และ Mapper เพื่อเพิ่มความปลอดภัย ความยืดหยุ่น และรองรับการดูแลรักษาและขยายระบบในระยะยาว",
      "descriptionBluePrintStatus": "ร่วมพัฒนาเว็บแอปพลิเคชันสำหรับบริหารจัดการสถานะของ BluePrint โดยใช้เทคโนโลยี Next.js และ Material UI (MUI) พร้อมทั้งออกแบบแผนผังด้วย Adobe Illustrator ก่อนนำมาดัดแปลงเป็น React Component เพื่อแสดงผลและควบคุมสถานะต่าง ๆ บน BluePrint ได้อย่างมีประสิทธิภาพ",
+     "descriptionPawcare": "จะเพิ่มรายละเอียดโปรเจกต์ในภายหลัง",
+     "descriptionOptSence": "จะเพิ่มรายละเอียดโปรเจกต์ในภายหลัง",
+     "descriptionUniva": "จะเพิ่มรายละเอียดโปรเจกต์ในภายหลัง",
      "descriptionScada": "การทดลองพัฒนาเว็บแอปพลิเคชันสำหรับจำลองระบบควบคุมพัดลม วาล์ว และถังเก็บน้ำ โดยใช้ React และ SVG เพื่อแสดงการไหลของอากาศหรือน้ำตามการควบคุมของผู้ใช้แบบอินเทอร์แอคทีฟ รองรับการเปิด–ปิดวาล์ว การปรับความเร็วพัดลม และการแสดงระดับน้ำในถัง แบบจำลองทั้งหมดได้รับการออกแบบด้วย Adobe Illustrator และแปลงเป็น React Component โดยใช้ Next.js สำหรับการแสดงผลบนฝั่งไคลเอนต์"
   },
   "workExperience": {

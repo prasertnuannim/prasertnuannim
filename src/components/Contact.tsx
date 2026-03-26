@@ -30,14 +30,8 @@ export default function Contact() {
   ];
 
   return (
-    <section className="section-ambient relative overflow-hidden px-4 py-20 sm:px-6 md:px-10">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-[-50px] top-[-40px] h-72 w-72 rounded-full bg-green-100/60 blur-3xl" />
-        <div className="absolute right-[-60px] top-1/3 h-80 w-80 rounded-full bg-emerald-100/50 blur-3xl" />
-        <div className="absolute bottom-[-80px] left-1/3 h-72 w-72 rounded-full bg-lime-100/40 blur-3xl" />
-      </div>
-
-      <div className={`relative mx-auto max-w-6xl ${styles.baseText}`}>
+    <section className="relative px-4 py-20 sm:px-6 md:px-10">
+      <div className={`mx-auto max-w-6xl ${styles.baseText}`}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

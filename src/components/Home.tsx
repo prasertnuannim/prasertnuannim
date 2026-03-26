@@ -16,16 +16,9 @@ export default function Home() {
       : "mx-auto mt-6 max-w-3xl whitespace-pre-line text-sm leading-7 text-gray-600 sm:text-base sm:leading-8 md:max-w-4xl md:text-lg lg:text-xl";
 
   return (
-    <section className="section-ambient relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-10 sm:px-8 md:px-16">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-[-60px] top-[-40px] h-72 w-72 rounded-full bg-green-100/60 blur-3xl" />
-        <div className="absolute right-[-80px] top-1/4 h-96 w-96 rounded-full bg-emerald-100/50 blur-3xl" />
-        <div className="absolute bottom-[-80px] left-1/3 h-80 w-80 rounded-full bg-lime-100/40 blur-3xl" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.75),_transparent_45%)]" />
-      </div>
-
+    <section className="relative flex min-h-screen items-center justify-center px-4 py-10 sm:px-8 md:px-16">
       <div
-        className={`relative mx-auto flex w-full max-w-6xl flex-col items-center text-center ${styles.baseText}`}
+        className={`mx-auto flex w-full max-w-6xl flex-col items-center text-center ${styles.baseText}`}
       >
         <motion.div
           initial={{ opacity: 0, y: 24, scale: 0.98 }}
