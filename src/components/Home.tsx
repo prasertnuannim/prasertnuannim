@@ -89,10 +89,10 @@ export default function Home() {
       : "mx-auto mt-6 max-w-3xl whitespace-pre-line text-sm leading-7 text-white/74 drop-shadow-[0_8px_28px_rgba(15,23,42,0.55)] sm:text-base sm:leading-8 md:max-w-4xl md:text-lg lg:text-xl";
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-10 sm:px-8 md:px-16">
+    <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden px-4 py-10 sm:px-8 md:px-16">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(2,6,23,0.12),rgba(2,6,23,0.52)_58%,rgba(2,6,23,0.82)_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.08),rgba(2,6,23,0.18)_34%,rgba(2,6,23,0.52)_100%)]" />
+        <div className="absolute inset-0" />
+        <div className="absolute inset-0" />
 
         {spaceNebulae.map((nebula) => (
           <motion.div
@@ -136,19 +136,36 @@ export default function Home() {
             <div className="relative flex w-full max-w-[18rem] items-center justify-center sm:max-w-[22rem] md:max-w-[26rem]">
               <motion.div
                 animate={{
-                  y: [0, -10, 0],
-                  rotate: [-1.8, 1.2, -1.8],
-                  scale: [1, 1.025, 1],
+                  x: [0, 3, 0, -2, 0],
+                  y: [0, -4, -7, -4, 0],
+                  rotate: [-1, -0.35, 0.5, -0.2, -1],
+                  scale: [1, 1.01, 1.018, 1.01, 1],
                 }}
-                whileHover={{ y: -8, rotate: 0, scale: 1.05 }}
-                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+                whileHover={{
+                  x: 0,
+                  y: -5,
+                  rotate: 0,
+                  scale: 1.03,
+                  transition: {
+                    type: "spring",
+                    stiffness: 90,
+                    damping: 18,
+                    mass: 1.1,
+                  },
+                }}
+                transition={{
+                  duration: 8.5,
+                  repeat: Infinity,
+                  ease: [0.42, 0, 0.58, 1],
+                  times: [0, 0.24, 0.5, 0.76, 1],
+                }}
                 className="relative flex w-full items-center justify-center"
               >
                 <div className="absolute left-1/2 top-1/2 -z-10 h-[90%] w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/20 blur-3xl" />
                 <div className="absolute left-1/2 top-[58%] -z-10 h-[20%] w-[60%] -translate-x-1/2 rounded-full bg-white/16 blur-2xl" />
 
                 <Image
-                  src="/images/sertCG.png"
+                  src="/images/sert.png"
                   alt="Sert profile illustration"
                   width={2100}
                   height={1500}

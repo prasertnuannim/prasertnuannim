@@ -23,11 +23,11 @@ export default function ColorMotionInChar({ name, className, colors }: Props) {
   const colorPalette = colors && colors.length > 0 ? colors : defaultColors;
   const textClassName = className ?? "text-2xl font-bold";
   const glowPalette = colorPalette.map(
-    (color) => `0 0 12px ${color}55, 0 0 28px ${color}33`
+    (color) => `0 0 8px ${color}44, 0 0 18px ${color}22`
   );
-  const bounceFrames = [0, -18, 0, -8, 0];
-  const scaleFrames = [1, 1.12, 0.96, 1.04, 1];
-  const rotateFrames = [0, -3, 0, 2, 0];
+  const bounceFrames = [0, -4, -7, -4, 0];
+  const scaleFrames = [1, 1.015, 1.03, 1.015, 1];
+  const rotateFrames = [0, -0.8, 0, 0.6, 0];
 
   const text = name ?? "";
   return (
@@ -52,45 +52,45 @@ export default function ColorMotionInChar({ name, className, colors }: Props) {
             }}
             transition={{
               color: {
-                duration: 4.2,
+                duration: 6,
                 repeat: Infinity,
                 repeatType: "mirror",
-                ease: "linear",
-                delay: i * 0.08,
+                ease: "easeInOut",
+                delay: i * 0.12,
               },
               textShadow: {
-                duration: 4.2,
+                duration: 6,
                 repeat: Infinity,
                 repeatType: "mirror",
-                ease: "linear",
-                delay: i * 0.08,
+                ease: "easeInOut",
+                delay: i * 0.12,
               },
               ...(isSpace
                 ? {}
                 : {
                     y: {
-                      duration: 1.35,
-                      times: [0, 0.22, 0.5, 0.72, 1],
+                      duration: 2.8,
+                      times: [0, 0.28, 0.5, 0.74, 1],
                       repeat: Infinity,
-                      repeatDelay: 0.18,
-                      ease: [0.34, 1.56, 0.64, 1],
-                      delay: i * 0.06,
+                      repeatDelay: 0.3,
+                      ease: "easeInOut",
+                      delay: i * 0.08,
                     },
                     scale: {
-                      duration: 1.35,
-                      times: [0, 0.22, 0.5, 0.72, 1],
+                      duration: 2.8,
+                      times: [0, 0.28, 0.5, 0.74, 1],
                       repeat: Infinity,
-                      repeatDelay: 0.18,
+                      repeatDelay: 0.3,
                       ease: "easeInOut",
-                      delay: i * 0.06,
+                      delay: i * 0.08,
                     },
                     rotate: {
-                      duration: 1.35,
-                      times: [0, 0.22, 0.5, 0.72, 1],
+                      duration: 2.8,
+                      times: [0, 0.28, 0.5, 0.74, 1],
                       repeat: Infinity,
-                      repeatDelay: 0.18,
+                      repeatDelay: 0.3,
                       ease: "easeInOut",
-                      delay: i * 0.06,
+                      delay: i * 0.08,
                     },
                   }),
             }}

@@ -3,8 +3,8 @@
 import { useEffect, useRef } from "react";
 
 type Star = {
-  x: number;
-  y: number;
+  xRatio: number;
+  yRatio: number;
   r: number;
   alpha: number;
   twinkle: number;
@@ -46,20 +46,35 @@ export default function GalaxySectionBackground() {
 
     const random = (min: number, max: number) => Math.random() * (max - min) + min;
 
-    const createScene = () => {
+    const createStar = (): Star => ({
+      xRatio: random(0, 1),
+      yRatio: random(0, 1),
+      r: random(0.45, 2.1),
+      alpha: random(0.35, 1),
+      twinkle: random(0.004, 0.04),
+      sparkle: random(0.4, 1.4),
+      phase: random(0, Math.PI * 2),
+    });
+
+    const syncScene = () => {
       const starCount = Math.max(100, Math.floor((width * height) / 12000));
 
-      stars = Array.from({ length: starCount }, () => ({
-        x: random(0, width),
-        y: random(0, height),
-        r: random(0.45, 2.1),
-        alpha: random(0.35, 1),
-        twinkle: random(0.004, 0.04),
-        sparkle: random(0.4, 1.4),
-        phase: random(0, Math.PI * 2),
-      }));
+      if (stars.length === 0) {
+        stars = Array.from({ length: starCount }, createStar);
+        return;
+      }
 
-      shootingStars = [];
+      if (starCount > stars.length + 12) {
+        stars = [
+          ...stars,
+          ...Array.from({ length: starCount - stars.length }, createStar),
+        ];
+        return;
+      }
+
+      if (starCount < stars.length - 12) {
+        stars = stars.slice(0, starCount);
+      }
     };
 
     const drawBackground = () => {
@@ -69,35 +84,37 @@ export default function GalaxySectionBackground() {
 
     const drawStars = () => {
       for (const star of stars) {
-        const flicker = Math.sin(time * star.twinkle + star.phase + star.x * 0.02 + star.y * 0.015);
-        const pulse = Math.sin(time * star.twinkle * 0.9 + star.phase + star.x * 0.012);
+        const x = star.xRatio * width;
+        const y = star.yRatio * height;
+        const flicker = Math.sin(time * star.twinkle + star.phase + x * 0.02 + y * 0.015);
+        const pulse = Math.sin(time * star.twinkle * 0.9 + star.phase + x * 0.012);
         const sparklePulse = Math.sin(time * star.twinkle * 1.8 + star.phase * 1.7);
         const alpha = Math.max(0.14, Math.min(1, star.alpha + flicker * 0.34));
         const glowRadius = star.r * (3.2 + (pulse + 1) * 1.4);
 
-        const glow = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, glowRadius);
+        const glow = ctx.createRadialGradient(x, y, 0, x, y, glowRadius);
         glow.addColorStop(0, `rgba(255,255,255,${alpha * 0.42})`);
         glow.addColorStop(0.35, `rgba(255,255,255,${alpha * 0.18})`);
         glow.addColorStop(1, "rgba(255,255,255,0)");
         ctx.fillStyle = glow;
         ctx.beginPath();
-        ctx.arc(star.x, star.y, glowRadius, 0, Math.PI * 2);
+        ctx.arc(x, y, glowRadius, 0, Math.PI * 2);
         ctx.fill();
 
         if (star.r > 1) {
-          const outerGlow = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, glowRadius * 1.8);
+          const outerGlow = ctx.createRadialGradient(x, y, 0, x, y, glowRadius * 1.8);
           outerGlow.addColorStop(0, `rgba(255,255,255,${alpha * 0.12})`);
           outerGlow.addColorStop(0.5, `rgba(210,220,255,${alpha * 0.05})`);
           outerGlow.addColorStop(1, "rgba(255,255,255,0)");
           ctx.fillStyle = outerGlow;
           ctx.beginPath();
-          ctx.arc(star.x, star.y, glowRadius * 1.8, 0, Math.PI * 2);
+          ctx.arc(x, y, glowRadius * 1.8, 0, Math.PI * 2);
           ctx.fill();
         }
 
         ctx.beginPath();
         ctx.fillStyle = `rgba(255,255,255,${alpha})`;
-        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+        ctx.arc(x, y, star.r, 0, Math.PI * 2);
         ctx.fill();
 
         const sparkleStrength = Math.max(0, sparklePulse) * star.sparkle;
@@ -105,10 +122,10 @@ export default function GalaxySectionBackground() {
           ctx.strokeStyle = `rgba(255,255,255,${Math.min(alpha * 0.2 + sparkleStrength * 0.12, 0.45)})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
-          ctx.moveTo(star.x - star.r * (3.5 + sparkleStrength * 2.5), star.y);
-          ctx.lineTo(star.x + star.r * (3.5 + sparkleStrength * 2.5), star.y);
-          ctx.moveTo(star.x, star.y - star.r * (3.5 + sparkleStrength * 2.5));
-          ctx.lineTo(star.x, star.y + star.r * (3.5 + sparkleStrength * 2.5));
+          ctx.moveTo(x - star.r * (3.5 + sparkleStrength * 2.5), y);
+          ctx.lineTo(x + star.r * (3.5 + sparkleStrength * 2.5), y);
+          ctx.moveTo(x, y - star.r * (3.5 + sparkleStrength * 2.5));
+          ctx.lineTo(x, y + star.r * (3.5 + sparkleStrength * 2.5));
           ctx.stroke();
         }
 
@@ -116,10 +133,10 @@ export default function GalaxySectionBackground() {
           ctx.strokeStyle = `rgba(220,230,255,${Math.min(0.28, alpha * 0.16 + sparkleStrength * 0.08)})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
-          ctx.moveTo(star.x - star.r * (2.4 + sparkleStrength * 1.4), star.y - star.r * (2.4 + sparkleStrength * 1.4));
-          ctx.lineTo(star.x + star.r * (2.4 + sparkleStrength * 1.4), star.y + star.r * (2.4 + sparkleStrength * 1.4));
-          ctx.moveTo(star.x + star.r * (2.4 + sparkleStrength * 1.4), star.y - star.r * (2.4 + sparkleStrength * 1.4));
-          ctx.lineTo(star.x - star.r * (2.4 + sparkleStrength * 1.4), star.y + star.r * (2.4 + sparkleStrength * 1.4));
+          ctx.moveTo(x - star.r * (2.4 + sparkleStrength * 1.4), y - star.r * (2.4 + sparkleStrength * 1.4));
+          ctx.lineTo(x + star.r * (2.4 + sparkleStrength * 1.4), y + star.r * (2.4 + sparkleStrength * 1.4));
+          ctx.moveTo(x + star.r * (2.4 + sparkleStrength * 1.4), y - star.r * (2.4 + sparkleStrength * 1.4));
+          ctx.lineTo(x - star.r * (2.4 + sparkleStrength * 1.4), y + star.r * (2.4 + sparkleStrength * 1.4));
           ctx.stroke();
         }
       }
@@ -209,7 +226,8 @@ export default function GalaxySectionBackground() {
       canvas.style.height = `${height}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      createScene();
+      // Preserve the scene across mobile viewport resizes so the background stays stable.
+      syncScene();
       drawFrame();
     };
 
