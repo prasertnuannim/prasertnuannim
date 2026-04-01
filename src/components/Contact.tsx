@@ -1,15 +1,72 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { SiLine } from "react-icons/si";
 import { MdEmail, MdPhone } from "react-icons/md";
 import { useLocale, useTranslations } from "next-intl";
 import { getStyles } from "@/styles";
 
+const VISITOR_COUNTER_NAMESPACE = "prasertnuannim-portfolio";
+const VISITOR_COUNTER_NAME = "visitors";
+const VISITOR_COUNTER_STORAGE_KEY = "prasertnuannim-portfolio-visitor-counted";
+const VISITOR_COUNTER_BASE_URL = `https://api.counterapi.dev/v1/${VISITOR_COUNTER_NAMESPACE}/${VISITOR_COUNTER_NAME}`;
+
+type CounterResponse = {
+  count?: number;
+};
+
+let visitorCountRequest: Promise<number> | null = null;
+
+async function getVisitorCount() {
+  if (visitorCountRequest) {
+    return visitorCountRequest;
+  }
+
+  visitorCountRequest = (async () => {
+    const hasCountedVisit =
+      window.localStorage.getItem(VISITOR_COUNTER_STORAGE_KEY) === "1";
+    const endpoint = hasCountedVisit
+      ? `${VISITOR_COUNTER_BASE_URL}/`
+      : `${VISITOR_COUNTER_BASE_URL}/up`;
+
+    if (!hasCountedVisit) {
+      window.localStorage.setItem(VISITOR_COUNTER_STORAGE_KEY, "1");
+    }
+
+    try {
+      const response = await fetch(endpoint, { cache: "no-store" });
+
+      if (!response.ok) {
+        throw new Error("Failed to load visitor count");
+      }
+
+      const data = (await response.json()) as CounterResponse;
+
+      if (typeof data.count !== "number") {
+        throw new Error("Invalid visitor count response");
+      }
+
+      return data.count;
+    } catch (error) {
+      if (!hasCountedVisit) {
+        window.localStorage.removeItem(VISITOR_COUNTER_STORAGE_KEY);
+      }
+
+      visitorCountRequest = null;
+      throw error;
+    }
+  })();
+
+  return visitorCountRequest;
+}
+
 export default function Contact() {
   const t = useTranslations("contact");
   const locale = useLocale();
   const styles = getStyles(locale);
+  const [visitorCount, setVisitorCount] = useState<number | null>(null);
+  const [visitorCountError, setVisitorCountError] = useState(false);
 
   const contactItems = [
     {
@@ -28,6 +85,41 @@ export default function Contact() {
       valueClassName: "break-all",
     },
   ];
+
+  useEffect(() => {
+    let isMounted = true;
+
+    void getVisitorCount()
+      .then((count) => {
+        if (!isMounted) {
+          return;
+        }
+
+        setVisitorCount(count);
+        setVisitorCountError(false);
+      })
+      .catch(() => {
+        if (isMounted) {
+          setVisitorCountError(true);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const formattedVisitorCount =
+    typeof visitorCount === "number"
+      ? new Intl.NumberFormat(locale === "th" ? "th-TH" : "en-US").format(
+          visitorCount,
+        )
+      : null;
+  const visitorCountText = visitorCountError
+    ? t("visitorCountUnavailable")
+    : formattedVisitorCount === null
+      ? t("visitorCountLoading")
+      : t("visitorCountSummary", { count: formattedVisitorCount });
 
   return (
     <section className="relative px-4 py-20 sm:px-6 md:px-10">
@@ -94,6 +186,10 @@ export default function Contact() {
                 {t("lineButton")}
               </a>
             </div>
+
+            <p className="mt-8 text-center text-sm font-medium text-emerald-800 sm:text-base">
+              {visitorCountText}
+            </p>
           </div>
         </motion.div>
       </div>

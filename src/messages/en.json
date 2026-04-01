@@ -46,6 +46,9 @@
     "description": "If you're interested in discussing new projects or have questions about my skills and experience, feel free to reach out via email or social media below.",
     "phoneLabel": "Phone",
     "emailLabel": "Email",
-    "lineButton": "Message on LINE"
+    "lineButton": "Message on LINE",
+    "visitorCountLoading": "Loading...",
+    "visitorCountUnavailable": "Unable to load right now",
+    "visitorCountSummary": "Website visitors: {count}"
   }
 }
