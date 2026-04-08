@@ -219,7 +219,7 @@ export default function Contact() {
   };
 
   const hasError = Object.values(errors).some(Boolean);
-
+// Note: The projects data and logic are not directly related to the Contact component,
   const formattedVisitorCount =
     typeof visitorCount === "number"
       ? new Intl.NumberFormat(locale === "th" ? "th-TH" : "en-US").format(
