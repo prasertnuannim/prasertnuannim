@@ -20,6 +20,18 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Contact Form Setup
+
+The contact form sends a styled email with Nodemailer and a Gmail App Password, then sends an automatic reply back to the visitor.
+
+1. Copy `.env.example` to `.env.local`
+2. Set `GMAIL_USER` to your Gmail address
+3. Set `GMAIL_APP_PASSWORD` to your 16-character Gmail App Password
+4. Optionally set `CONTACT_RECEIVER_EMAIL` if you want the message delivered to a different inbox
+5. Optionally set `CONTACT_FROM_NAME` to change the sender display name
+
+This feature requires a Node.js runtime. It will not work with static export or GitHub Pages hosting.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
