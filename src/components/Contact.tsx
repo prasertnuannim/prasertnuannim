@@ -121,9 +121,9 @@ export default function Contact() {
     {
       href: "tel:+66830099743",
       label: t("phoneLabel"),
-      value: "083-009-9743",
+      value: "094-198-8945",
       icon: <MdPhone className="text-2xl" />,
-      ariaLabel: "Call 083-009-9743",
+      ariaLabel: "Call 094-198-8945",
     },
     {
       href: `mailto:${CONTACT_EMAIL}`,
@@ -131,7 +131,8 @@ export default function Contact() {
       value: CONTACT_EMAIL,
       icon: <MdEmail className="text-2xl" />,
       ariaLabel: `Send email to ${CONTACT_EMAIL}`,
-      valueClassName: "break-all",
+      valueClassName:
+        "break-all pointer-events-none select-none sm:pointer-events-auto sm:select-text",
     },
   ];
 
