@@ -48,19 +48,25 @@ export default function Projects() {
         description: t("descriptionSmartOr"),
         image: "/images/bluePrintRoom.png",
       },
-       {
+      {
         id: "pawcare",
         title: t("titlePawcare"),
         description: t("descriptionPawcare"),
         image: "/images/pawcare.png",
       },
-       {
+      {
+        id: "nutri-pet",
+        title: t("titleNutriPet"),
+        description: t("descriptionNutriPet"),
+        image: "/images/nutriPet.png",
+      },
+      {
         id: "opt-sense",
         title: t("titleOptSence"),
         description: t("descriptionOptSence"),
         image: "/images/optSense.png",
       },
-        {
+      {
         id: "univa",
         title: t("titleUniva"),
         description: t("descriptionUniva"),

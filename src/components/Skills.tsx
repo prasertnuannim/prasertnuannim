@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import {
 
   SiDocker,
+  SiGithubactions,
   SiJavascript,
   SiReact,
   SiNextdotjs,
@@ -65,6 +66,11 @@ const skills = [
     name: "Node.js",
     icon: <SiNodedotjs className="text-green-500" />,
     category: "Backend",
+  },
+  {
+    name: "DevOps",
+    icon: <SiGithubactions className="text-[#2088FF]" />,
+    category: "DevOps",
   },
   {
     name: "Docker",

@@ -20,6 +20,7 @@
     "titleESD": "ESD Tester",
     "titleSmartOr": "Smart OR",
     "titlePawcare": "Pawcare",
+    "titleNutriPet": "NutriPet",
     "titleOptSence": "Opt Sense",
     "titleUniva": "Univa",
     "titleScada": "POC Dashboard SCADA",
@@ -32,6 +33,7 @@
      "descriptionNextAuth": "พัฒนาเว็บแอปพลิเคชันด้วย Next.js โดยใช้ Tailwind CSS สำหรับออกแบบ UI และ NextAuth สำหรับระบบยืนยันตัวตน ฝั่ง Backend ออกแบบตามแนวคิด Clean Architecture และ Domain-Driven Design แยกความรับผิดชอบของ Domain, Service และ Infrastructure อย่างชัดเจน ใช้ Prisma เป็น ORM เชื่อมต่อกับ PostgreSQL พร้อมการจัดการข้อมูลผ่าน DTO, Schema และ Mapper เพื่อเพิ่มความปลอดภัย ความยืดหยุ่น และรองรับการดูแลรักษาและขยายระบบในระยะยาว",
      "descriptionSmartOr": "ร่วมพัฒนาเว็บแอปพลิเคชันสำหรับบริหารจัดการสถานะและการจองห้องผ่าตัดในโรงพยาบาล โดยใช้ Next.js และ Material UI (MUI) ในการพัฒนา UI พร้อมออกแบบแผนผังระบบด้วย Adobe Illustrator ก่อนนำมาปรับเป็น React Components เพื่อใช้แสดงผลและควบคุมสถานะห้องแบบเรียลไทม์",
      "descriptionPawcare": "ร่วมพัฒนาเว็บแอปพลิเคชัน สำหรับจัดการสูตรอาหารสัตว์เลี้ยง พร้อมระบบคำนวณคุณค่าทางโภชนาการและแนะนำสูตรอาหารตามประเภทสัตว์และเงื่อนไขเฉพาะ (เช่น อายุ น้ำหนัก หรือสุขภาพ) โดยพัฒนา Frontend ด้วย Next.js และ Backend ด้วย Node.js",
+     "descriptionNutriPet": "NutriPet เป็น full-stack web application ที่พัฒนาต่อยอดมาจาก Pawcare สำหรับจัดการคลินิกสัตว์เลี้ยงและงานโภชนาการสัตว์ พัฒนาด้วย Next.js, Go Fiber และ PostgreSQL รองรับระบบผู้ใช้งานหลายบทบาท, multi-tenant, การลงทะเบียนสัตว์เลี้ยง, ข้อมูลเจ้าของ, การตั้งค่าสารอาหาร, หลายภาษา พร้อม CI/CD pipeline, Infrastructure as Code ด้วย AWS CDK และ deployment automation บน AWS",
      "descriptionOptSence": "ร่วมพัฒนาเว็บแอปพลิเคชันสำหรับรับและแสดงผลข้อมูลจากอุปกรณ์ IoT Sensor โดยรองรับการส่งข้อมูลผ่าน API และจัดเก็บในฐานข้อมูล PostgreSQL พร้อมแสดงผลแบบเรียลไทม์ผ่าน Dashboard ที่พัฒนาด้วย Next.js และ Node.js รวมถึงออกแบบ Dashboard ด้วย Canva เพื่อนำมาพัฒนาเป็น UI",
      "descriptionUniva": "พัฒนา Dashboard UI ด้วย Next.js, Chart.js และ Tailwind CSS พร้อมออกแบบฐานข้อมูลเชิงเวลา (Time-based Data Modeling) โดยใช้ Table cache ในฐานข้อมูลสำหรับจัดเก็บข้อมูลในระดับเดือนและปี และใช้ Cron Job ในการประมวลผลและบันทึกข้อมูลแบบรายวัน (Daily Aggregation) ลงใน Table ดังกล่าว เพื่อเพิ่มประสิทธิภาพในการ query และรองรับการ filter ข้อมูลในอนาคต",
      "descriptionScada": "การทดลองพัฒนาเว็บแอปพลิเคชันสำหรับจำลองระบบควบคุมพัดลม วาล์ว และถังเก็บน้ำ โดยใช้ React และ SVG เพื่อแสดงการไหลของอากาศหรือน้ำตามการควบคุมของผู้ใช้แบบอินเทอร์แอคทีฟ รองรับการเปิด–ปิดวาล์ว การปรับความเร็วพัดลม และการแสดงระดับน้ำในถัง แบบจำลองทั้งหมดได้รับการออกแบบด้วย Adobe Illustrator และแปลงเป็น React Component โดยใช้ Next.js สำหรับการแสดงผลบนฝั่งไคลเอนต์"
@@ -39,7 +41,7 @@
   "workExperience": {
     "title": "ประสบการณ์การทำงาน",
     "descriptionBelton": "ผมเริ่มต้นทำงานที่บริษัท เบลตัน จำกัด ตั้งแต่ปี 2556 - 2567 ในตำแหน่งเจ้าหน้าที่ IT Support โดยรับผิดชอบด้านการติดตั้ง ดูแล และแก้ไขปัญหาคอมพิวเตอร์ทั้งในสำนักงานและพื้นที่การผลิต รวมถึงการแก้ปัญหาเครือข่ายภายในองค์กรที่ใช้ระบบ Cisco ตลอดระยะเวลากว่า 10 ปี ผมได้พัฒนาทักษะทั้งด้านเทคนิคและการคิดเชิงระบบ จนมีโอกาสขยายบทบาทเข้าสู่การพัฒนาเว็บและระบบ IoT โดยได้ออกแบบระบบเครือข่าย Wi-Fi และโดเมน API ภายในเพื่อสนับสนุนโครงการ IoT ใช้ MySQL คำนวณประสิทธิภาพเครื่องจักร (OEE) และเก็บข้อมูลดิบเพื่อการตรวจสอบย้อนหลัง รวมถึงพัฒนาไมโครคอนโทรลเลอร์ด้วยภาษา Python และ Arduino (C/C++) สำหรับการควบคุมอุปกรณ์และเก็บข้อมูลแบบเรียลไทม์ นอกจากนี้ผมยังได้สร้างแดชบอร์ดและเว็บแอปพลิเคชันภายในองค์กรโดยใช้เทคโนโลยีอย่าง Node.js, Next.js, React, Redux, Tailwind CSS และ Chart.js เพื่อแสดงผลข้อมูลจากระบบ IoT และสนับสนุนการตัดสินใจของทีมงานในภาคการผลิต",
-    "descriptionGeno": "พัฒนาเว็บแอปพลิเคชันแบบ Full Stack โดยใช้ Next.js ในฝั่ง Frontend และ Node.js ในฝั่ง Backend โดยมี PostgreSQL เป็นฐานข้อมูลหลัก เชื่อมต่อระบบกับอุปกรณ์ IoT เพื่อรับ-ส่งข้อมูลจากคอนโทรลเลอร์ และแสดงผลข้อมูลแบบเรียลไทม์ผ่านแดชบอร์ด พร้อมประสานงานร่วมกับทีมงานหลายฝ่ายเพื่อส่งมอบโซลูชันที่มีประสิทธิภาพและสามารถขยายได้ในอนาคต"
+    "descriptionGeno": "Software Development: พัฒนาและดูแลเว็บแอปพลิเคชันแบบ Full Stack สำหรับโรงพยาบาล คลินิกสัตวแพทย์ และงานภายในองค์กร โดยใช้ Next.js, TypeScript, MUI, Tailwind CSS, Node.js, Express.js, Go และ Sequelize พร้อมออกแบบฐานข้อมูล PostgreSQL, สถาปัตยกรรมแบบ Multi-Tenant และพัฒนาระบบ Authentication, Authorization และ RBAC.\n\nDevOps & Infrastructure: Deploy และดูแลระบบทั้งบน AWS และโครงสร้างพื้นฐานแบบ On-Premises ด้วย Docker จัดการ Cloud Resource ผ่าน AWS CDK และ Infrastructure as Code (IaC), วาง CI/CD Workflow และใช้เครื่องมือพัฒนาแบบ AI-assisted รวมถึง Codex เพื่อเพิ่มประสิทธิภาพการส่งมอบงานและคุณภาพของโค้ด"
   },
   "contact": {
     "title": "ติดต่อฉัน",

@@ -19,7 +19,7 @@ export default function Work() {
     },
     {
       id: "belton",
-      position: "IT Support",
+      position: "IT Support & IoT developer",
       company: "Belton Industrial (Thailand) Ltd.",
       period: "2013 - 2024",
       description: t("descriptionBelton"),
@@ -99,7 +99,7 @@ export default function Work() {
                     </div>
                   </div>
 
-                  <p className="text-base leading-8 text-gray-600 sm:text-lg sm:leading-9">
+                  <p className="whitespace-pre-line text-base leading-8 text-gray-600 sm:text-lg sm:leading-9">
                     {exp.description}
                   </p>
                 </div>
