@@ -83,7 +83,7 @@ export default function Projects() {
         title: t("titleScada"),
         description: t("descriptionScada"),
         image: "/images/pocScada.png",
-        link: "https://github.com/yourusername/poc-scada",
+        link: "https://next-js-svg-peach.vercel.app/",
       },
       {
         id: "boilerplate",
